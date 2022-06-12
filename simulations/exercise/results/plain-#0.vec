@@ -1,0 +1,5562 @@
+version 3
+run plain-0-20220514-01:10:28-8694
+attr configname plain
+attr datetime 20220514-01:10:28
+attr datetimef 20220514-011028
+attr experiment plain
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Scenario
+attr processid 8694
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../../Documents/inet/images:../../../../../Documents/veins/images
+config *.visualizer.osgVisualizer.typename ""
+config network Scenario
+config sim-time-limit 60s
+config debug-on-errors true
+config cmdenv-express-mode true
+config image-path ../../../../images
+config *.node[*].numApps 1
+config *.node[*].app[0].typename vanettutorials.veins_inet.VeinsInetSampleApplication
+config *.node[*].app[0].interface "\"wlan0\""
+config *.node[*].wlan[0].opMode "\"p\""
+config *.node[*].wlan[0].radio.typename Ieee80211DimensionalRadio
+config *.node[*].wlan[0].radio.bandName "\"5.9 GHz\""
+config *.node[*].wlan[0].radio.channelNumber 3
+config *.node[*].wlan[0].radio.transmitter.power 20mW
+config *.node[*].wlan[0].radio.bandwidth "10 MHz"
+config *.node[*].wlan[*].radio.antenna.mobility.typename AttachedMobility
+config *.node[*].wlan[*].radio.antenna.mobility.mobilityModule "\"^.^.^.^.mobility\""
+config *.node[*].wlan[*].radio.antenna.mobility.offsetX -2.5m
+config *.node[*].wlan[*].radio.antenna.mobility.offsetZ 1.5m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinZ 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxZ 0m
+config *.node[*].ipv4.configurator.typename HostAutoConfigurator
+config *.node[*].ipv4.configurator.interfaces "\"wlan0\""
+config *.node[*].ipv4.configurator.mcastGroups "\"224.0.0.1\""
+config *.node[*].mobility.typename VeinsInetMobility
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"ex1.launchd.xml\")"
+config *.manager.moduleType "\"vanettutorials.veins_inet.VeinsInetCar\""
+config *.physicalEnvironment.config "xmldoc(\"obstacles.xml\")"
+config *.radioMedium.obstacleLoss.typename IdealObstacleLoss
+config **.vector-recording true
+
+vector 0 Scenario.node[0].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 2 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 3 Scenario.node[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 Scenario.node[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 Scenario.node[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 Scenario.node[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 7 Scenario.node[0].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 8 Scenario.node[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 9 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 10 Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 11 Scenario.node[1].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 12 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 13 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 14 Scenario.node[1].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 15 Scenario.node[1].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 16 Scenario.node[1].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 17 Scenario.node[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 18 Scenario.node[1].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 19 Scenario.node[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 20 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 21 Scenario.node[1].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 22 Scenario.node[2].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 23 Scenario.node[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 24 Scenario.node[2].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 25 Scenario.node[2].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 26 Scenario.node[2].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 27 Scenario.node[2].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 28 Scenario.node[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 29 Scenario.node[2].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 30 Scenario.node[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 31 Scenario.node[2].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 32 Scenario.node[2].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 33 Scenario.node[3].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 34 Scenario.node[3].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 35 Scenario.node[3].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 36 Scenario.node[3].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 37 Scenario.node[3].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 38 Scenario.node[3].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 39 Scenario.node[3].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 40 Scenario.node[3].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 41 Scenario.node[3].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 42 Scenario.node[3].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 43 Scenario.node[3].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 44 Scenario.node[4].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 45 Scenario.node[4].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 46 Scenario.node[4].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 47 Scenario.node[4].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 48 Scenario.node[4].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 49 Scenario.node[4].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 50 Scenario.node[4].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 51 Scenario.node[4].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 52 Scenario.node[4].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 53 Scenario.node[4].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 54 Scenario.node[4].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 55 Scenario.node[5].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 56 Scenario.node[5].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 57 Scenario.node[5].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 58 Scenario.node[5].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 59 Scenario.node[5].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 60 Scenario.node[5].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 61 Scenario.node[5].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 62 Scenario.node[5].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 63 Scenario.node[5].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 64 Scenario.node[5].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 65 Scenario.node[5].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 66 Scenario.node[6].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 67 Scenario.node[6].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 68 Scenario.node[6].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 69 Scenario.node[6].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 70 Scenario.node[6].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 71 Scenario.node[6].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 72 Scenario.node[6].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 73 Scenario.node[6].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 74 Scenario.node[6].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 75 Scenario.node[6].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 76 Scenario.node[6].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 77 Scenario.node[7].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 78 Scenario.node[7].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 79 Scenario.node[7].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 80 Scenario.node[7].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 81 Scenario.node[7].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 82 Scenario.node[7].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 83 Scenario.node[7].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 84 Scenario.node[7].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 85 Scenario.node[7].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 86 Scenario.node[7].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 87 Scenario.node[7].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 88 Scenario.node[8].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 89 Scenario.node[8].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 90 Scenario.node[8].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 91 Scenario.node[8].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 92 Scenario.node[8].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 93 Scenario.node[8].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 94 Scenario.node[8].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 95 Scenario.node[8].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 96 Scenario.node[8].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 97 Scenario.node[8].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 98 Scenario.node[8].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 99 Scenario.node[9].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 100 Scenario.node[9].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 101 Scenario.node[9].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 102 Scenario.node[9].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 103 Scenario.node[9].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 104 Scenario.node[9].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 105 Scenario.node[9].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 106 Scenario.node[9].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 107 Scenario.node[9].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 108 Scenario.node[9].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 109 Scenario.node[9].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 110 Scenario.node[10].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 111 Scenario.node[10].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 112 Scenario.node[10].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 113 Scenario.node[10].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 114 Scenario.node[10].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 115 Scenario.node[10].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 116 Scenario.node[10].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 117 Scenario.node[10].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 118 Scenario.node[10].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 119 Scenario.node[10].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 120 Scenario.node[10].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 121 Scenario.node[11].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 122 Scenario.node[11].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 123 Scenario.node[11].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 124 Scenario.node[11].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 125 Scenario.node[11].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 126 Scenario.node[11].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 127 Scenario.node[11].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 128 Scenario.node[11].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 129 Scenario.node[11].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 130 Scenario.node[11].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 131 Scenario.node[11].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 132 Scenario.node[12].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 133 Scenario.node[12].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 134 Scenario.node[12].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 135 Scenario.node[12].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 136 Scenario.node[12].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 137 Scenario.node[12].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 138 Scenario.node[12].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 139 Scenario.node[12].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 140 Scenario.node[12].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 141 Scenario.node[12].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 142 Scenario.node[12].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 143 Scenario.node[13].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 144 Scenario.node[13].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 145 Scenario.node[13].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 146 Scenario.node[13].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 147 Scenario.node[13].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 148 Scenario.node[13].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 149 Scenario.node[13].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 150 Scenario.node[13].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 151 Scenario.node[13].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 152 Scenario.node[13].wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 153 Scenario.node[13].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 154 Scenario.node[0].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 155 Scenario.node[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 156 Scenario.node[0].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 157 Scenario.node[0].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 158 Scenario.node[0].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 159 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 160 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 161 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 162 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 163 Scenario.node[0].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 164 Scenario.node[0].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 165 Scenario.node[0].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 166 Scenario.node[0].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 167 Scenario.node[0].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 168 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 169 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 170 Scenario.node[0].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 171 Scenario.node[0].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 172 Scenario.node[0].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 173 Scenario.node[0].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 174 Scenario.node[0].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 175 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 176 Scenario.node[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 177 Scenario.node[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 178 Scenario.node[2].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 179 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 180 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 181 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 182 Scenario.node[2].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 183 Scenario.node[2].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 184 Scenario.node[2].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 185 Scenario.node[2].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 186 Scenario.node[2].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 187 Scenario.node[2].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 188 Scenario.node[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 189 Scenario.node[2].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 190 Scenario.node[2].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 191 Scenario.node[2].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 192 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 193 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 194 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 195 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 196 Scenario.node[2].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 197 Scenario.node[5].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 198 Scenario.node[5].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 199 Scenario.node[5].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 200 Scenario.node[5].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 201 Scenario.node[5].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 202 Scenario.node[5].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 203 Scenario.node[5].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 204 Scenario.node[5].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 205 Scenario.node[5].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 206 Scenario.node[5].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 207 Scenario.node[5].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 208 Scenario.node[5].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 209 Scenario.node[5].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 210 Scenario.node[5].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 211 Scenario.node[5].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 212 Scenario.node[5].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 213 Scenario.node[5].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 214 Scenario.node[5].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 215 Scenario.node[5].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 216 Scenario.node[7].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 217 Scenario.node[7].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 218 Scenario.node[7].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 219 Scenario.node[7].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 220 Scenario.node[7].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 221 Scenario.node[7].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 222 Scenario.node[7].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 223 Scenario.node[7].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 224 Scenario.node[7].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 225 Scenario.node[7].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 226 Scenario.node[7].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 227 Scenario.node[7].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 228 Scenario.node[7].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 229 Scenario.node[7].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 230 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 231 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 232 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 233 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 234 Scenario.node[7].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 235 Scenario.node[6].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 236 Scenario.node[6].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 237 Scenario.node[6].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 238 Scenario.node[6].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 239 Scenario.node[6].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 240 Scenario.node[6].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 241 Scenario.node[6].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 242 Scenario.node[6].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 243 Scenario.node[6].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 244 Scenario.node[6].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 245 Scenario.node[6].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 246 Scenario.node[6].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 247 Scenario.node[6].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 248 Scenario.node[6].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 249 Scenario.node[6].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 250 Scenario.node[6].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 251 Scenario.node[6].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 252 Scenario.node[6].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 253 Scenario.node[6].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 254 Scenario.node[4].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 255 Scenario.node[4].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 256 Scenario.node[4].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 257 Scenario.node[4].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 258 Scenario.node[4].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 259 Scenario.node[4].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 260 Scenario.node[4].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 261 Scenario.node[4].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 262 Scenario.node[4].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 263 Scenario.node[4].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 264 Scenario.node[4].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 265 Scenario.node[4].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 266 Scenario.node[4].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 267 Scenario.node[4].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 268 Scenario.node[4].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 269 Scenario.node[4].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 270 Scenario.node[4].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 271 Scenario.node[4].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 272 Scenario.node[4].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 273 Scenario.node[3].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 274 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 275 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 276 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 277 Scenario.node[3].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 278 Scenario.node[3].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 279 Scenario.node[3].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 280 Scenario.node[3].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 281 Scenario.node[3].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 282 Scenario.node[3].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 283 Scenario.node[3].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 284 Scenario.node[3].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 285 Scenario.node[3].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 286 Scenario.node[3].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 287 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 288 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 289 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 290 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 291 Scenario.node[3].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 292 Scenario.node[1].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 293 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 294 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 295 Scenario.node[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 296 Scenario.node[1].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 297 Scenario.node[1].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 298 Scenario.node[1].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 299 Scenario.node[1].app[0] throughput:vector ETV
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+vector 300 Scenario.node[1].app[0] rcvdPkLifetime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+vector 301 Scenario.node[1].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 302 Scenario.node[1].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 303 Scenario.node[1].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 304 Scenario.node[1].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 305 Scenario.node[1].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 306 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 307 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 308 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 309 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 310 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 311 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 312 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 313 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 314 Scenario.node[1].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 315 Scenario.node[1].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 316 Scenario.node[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 317 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 318 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 319 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 320 Scenario.node[2].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 321 Scenario.node[2].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 322 Scenario.node[2].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 323 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 324 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 325 Scenario.node[7].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 326 Scenario.node[7].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 327 Scenario.node[7].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 328 Scenario.node[7].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 329 Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 330 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 331 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 332 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+0	2	0.1	0
+0	2	0.1	0
+0	262	20	1
+0	278	20.000152	0
+1	2	0.1	0
+1	2	0.1	0
+1	262	20	1
+1	262	20	2
+1	278	20.000152	1
+2	2	0.1	0
+2	2	0.1	0
+2	250	20	1
+2	261	20	0
+2	279	20.000152	1
+2	397	20.000211773862	0
+3	2	0.1	0
+3	251	20	1
+3	259	20	2
+4	2	0.1	0
+5	2	0.1	0
+6	2	0.1	0
+6	2	0.1	0
+6	2	0.1	2
+6	263	20	3
+6	279	20.000152	2
+7	2	0.1	3
+8	2	0.1	1
+8	263	20	0
+8	279	20.000152	1
+8	397	20.000211773862	3
+9	2	0.1	0
+9	2	0.1	0
+9	250	20	0
+9	250	20	2
+9	261	20	2
+9	261	20	0
+9	263	20	0
+9	263	20	0
+9	278	20.000152	0
+9	278	20.000152	1
+9	279	20.000152	1
+9	279	20.000152	2
+9	397	20.000211773862	2
+9	397	20.000211773862	1
+10	2	0.1	15
+11	2	0.1	0
+11	2	0.1	0
+11	385	20.000210886931	1
+11	435	20.000362886931	0
+12	2	0.1	0
+12	2	0.1	0
+12	385	20.000210886931	1
+12	435	20.000362886931	0
+13	2	0.1	0
+13	2	0.1	0
+13	381	20.000152886931	1
+13	384	20.000210886931	0
+14	2	0.1	0
+14	374	20.000152886931	1
+14	382	20.000152886931	2
+15	2	0.1	0
+16	2	0.1	0
+17	2	0.1	0
+17	2	0.1	0
+17	2	0.1	2
+17	386	20.000210886931	3
+17	436	20.000362886931	2
+18	2	0.1	3
+19	2	0.1	1
+19	277	20.000000886931	3
+19	370	20.000152886931	1
+19	386	20.000210886931	0
+19	436	20.000362886931	1
+20	2	0.1	0
+20	2	0.1	0
+20	277	20.000000886931	0
+20	277	20.000000886931	0
+20	370	20.000152886931	0
+20	370	20.000152886931	0
+20	381	20.000152886931	0
+20	381	20.000152886931	2
+20	384	20.000210886931	2
+20	384	20.000210886931	0
+20	386	20.000210886931	0
+20	386	20.000210886931	0
+20	436	20.000362886931	0
+20	436	20.000362886931	0
+21	2	0.1	15
+22	38	3.1	0
+22	38	3.1	0
+22	402	20.000249106477	1
+23	38	3.1	0
+23	38	3.1	0
+23	402	20.000249106477	1
+24	38	3.1	0
+24	38	3.1	0
+24	291	20.000152106477	1
+24	401	20.000249106477	0
+25	38	3.1	0
+25	284	20.000152106477	1
+25	292	20.000152106477	2
+26	38	3.1	0
+27	38	3.1	0
+28	38	3.1	0
+28	38	3.1	0
+28	38	3.1	2
+28	403	20.000249106477	3
+29	38	3.1	3
+30	38	3.1	1
+30	265	20.000000106477	3
+30	280	20.000152106477	1
+30	403	20.000249106477	0
+31	38	3.1	0
+31	38	3.1	0
+31	265	20.000000106477	0
+31	265	20.000000106477	0
+31	280	20.000152106477	0
+31	280	20.000152106477	0
+31	291	20.000152106477	0
+31	291	20.000152106477	2
+31	401	20.000249106477	2
+31	401	20.000249106477	0
+31	403	20.000249106477	0
+31	403	20.000249106477	0
+32	38	3.1	15
+33	38	3.1	0
+33	38	3.1	0
+34	38	3.1	0
+34	38	3.1	0
+35	38	3.1	0
+35	38	3.1	0
+35	367	20.000152816883	1
+35	388	20.000210957012	0
+35	437	20.000362957012	1
+36	38	3.1	0
+36	360	20.000152816883	1
+36	368	20.000152816883	2
+36	441	20.000362957012	3
+37	38	3.1	0
+38	38	3.1	0
+39	38	3.1	0
+39	38	3.1	0
+39	38	3.1	2
+40	38	3.1	3
+41	38	3.1	1
+41	276	20.000000816883	3
+41	356	20.000152816883	1
+41	388	20.000210957012	3
+41	437	20.000362957012	1
+42	38	3.1	0
+42	38	3.1	0
+42	276	20.000000816883	0
+42	276	20.000000816883	0
+42	356	20.000152816883	0
+42	356	20.000152816883	0
+42	367	20.000152816883	0
+42	367	20.000152816883	2
+42	388	20.000210957012	2
+42	388	20.000210957012	1
+42	437	20.000362957012	1
+42	437	20.000362957012	2
+43	38	3.1	15
+44	74	6.1	0
+44	74	6.1	0
+45	74	6.1	0
+45	74	6.1	0
+46	74	6.1	0
+46	74	6.1	0
+46	352	20.000152711376	1
+46	389	20.000211062581	0
+47	74	6.1	0
+47	345	20.000152711376	1
+47	353	20.000152711376	2
+48	74	6.1	0
+49	74	6.1	0
+50	74	6.1	0
+50	74	6.1	0
+50	74	6.1	2
+51	74	6.1	3
+52	74	6.1	1
+52	274	20.000000711376	3
+52	341	20.000152711376	1
+52	389	20.000211062581	3
+53	74	6.1	0
+53	74	6.1	0
+53	274	20.000000711376	0
+53	274	20.000000711376	0
+53	341	20.000152711376	0
+53	341	20.000152711376	0
+53	352	20.000152711376	0
+53	352	20.000152711376	2
+53	389	20.000211062581	2
+53	389	20.000211062581	1
+54	74	6.1	15
+55	74	6.1	0
+55	74	6.1	0
+56	74	6.1	0
+56	74	6.1	0
+57	74	6.1	0
+57	74	6.1	0
+57	305	20.000152281586	1
+57	406	20.000249281586	0
+58	74	6.1	0
+58	298	20.000152281586	1
+58	306	20.000152281586	2
+59	74	6.1	0
+60	74	6.1	0
+61	74	6.1	0
+61	74	6.1	0
+61	74	6.1	2
+62	74	6.1	3
+63	74	6.1	1
+63	266	20.000000281586	3
+63	294	20.000152281586	1
+63	406	20.000249281586	3
+64	74	6.1	0
+64	74	6.1	0
+64	266	20.000000281586	0
+64	266	20.000000281586	0
+64	294	20.000152281586	0
+64	294	20.000152281586	0
+64	305	20.000152281586	0
+64	305	20.000152281586	2
+64	406	20.000249281586	2
+64	406	20.000249281586	1
+65	74	6.1	15
+66	110	9.1	0
+66	110	9.1	0
+67	110	9.1	0
+67	110	9.1	0
+68	110	9.1	0
+68	110	9.1	0
+68	336	20.000152667952	1
+68	390	20.000211107078	0
+69	110	9.1	0
+69	329	20.000152667952	1
+69	337	20.000152667952	2
+70	110	9.1	0
+71	110	9.1	0
+72	110	9.1	0
+72	110	9.1	0
+72	110	9.1	2
+73	110	9.1	3
+74	110	9.1	1
+74	271	20.000000667952	3
+74	325	20.000152667952	1
+74	390	20.000211107078	3
+75	110	9.1	0
+75	110	9.1	0
+75	271	20.000000667952	0
+75	271	20.000000667952	0
+75	325	20.000152667952	0
+75	325	20.000152667952	0
+75	336	20.000152667952	0
+75	336	20.000152667952	2
+75	390	20.000211107078	2
+75	390	20.000211107078	1
+76	110	9.1	15
+77	110	9.1	0
+77	110	9.1	0
+77	408	20.000249321838	1
+78	110	9.1	0
+78	110	9.1	0
+78	408	20.000249321838	1
+79	110	9.1	0
+79	110	9.1	0
+79	319	20.000152321838	1
+79	407	20.000249321838	0
+80	110	9.1	0
+80	312	20.000152321838	1
+80	320	20.000152321838	2
+81	110	9.1	0
+82	110	9.1	0
+83	110	9.1	0
+83	110	9.1	0
+83	110	9.1	2
+83	409	20.000249321838	3
+84	110	9.1	3
+85	110	9.1	1
+85	267	20.000000321838	3
+85	308	20.000152321838	1
+85	409	20.000249321838	0
+86	110	9.1	0
+86	110	9.1	0
+86	267	20.000000321838	0
+86	267	20.000000321838	0
+86	308	20.000152321838	0
+86	308	20.000152321838	0
+86	319	20.000152321838	0
+86	319	20.000152321838	2
+86	407	20.000249321838	2
+86	407	20.000249321838	0
+86	409	20.000249321838	0
+86	409	20.000249321838	0
+87	110	9.1	15
+88	146	12.1	0
+88	146	12.1	0
+89	146	12.1	0
+89	146	12.1	0
+90	146	12.1	0
+90	146	12.1	0
+91	146	12.1	0
+92	146	12.1	0
+93	146	12.1	0
+94	146	12.1	0
+94	146	12.1	0
+94	146	12.1	2
+95	146	12.1	3
+96	146	12.1	1
+96	391	20.000211134295	3
+97	146	12.1	0
+97	146	12.1	0
+97	391	20.000211134295	0
+97	391	20.000211134295	0
+98	146	12.1	15
+99	146	12.1	0
+99	146	12.1	0
+100	146	12.1	0
+100	146	12.1	0
+101	146	12.1	0
+101	146	12.1	0
+102	146	12.1	0
+103	146	12.1	0
+104	146	12.1	0
+105	146	12.1	0
+105	146	12.1	0
+105	146	12.1	2
+106	146	12.1	3
+107	146	12.1	1
+107	414	20.000249398433	3
+108	146	12.1	0
+108	146	12.1	0
+108	414	20.000249398433	0
+108	414	20.000249398433	0
+109	146	12.1	15
+110	182	15.1	0
+110	182	15.1	0
+111	182	15.1	0
+111	182	15.1	0
+112	182	15.1	0
+112	182	15.1	0
+113	182	15.1	0
+114	182	15.1	0
+115	182	15.1	0
+116	182	15.1	0
+116	182	15.1	0
+116	182	15.1	2
+117	182	15.1	3
+118	182	15.1	1
+118	392	20.000211208062	3
+119	182	15.1	0
+119	182	15.1	0
+119	392	20.000211208062	0
+119	392	20.000211208062	0
+120	182	15.1	15
+121	182	15.1	0
+121	182	15.1	0
+122	182	15.1	0
+122	182	15.1	0
+123	182	15.1	0
+123	182	15.1	0
+124	182	15.1	0
+125	182	15.1	0
+126	182	15.1	0
+127	182	15.1	0
+127	182	15.1	0
+127	182	15.1	2
+128	182	15.1	3
+129	182	15.1	1
+129	395	20.000211627557	3
+130	182	15.1	0
+130	182	15.1	0
+130	395	20.000211627557	0
+130	395	20.000211627557	0
+131	182	15.1	15
+132	218	18.1	0
+132	218	18.1	0
+133	218	18.1	0
+133	218	18.1	0
+134	218	18.1	0
+134	218	18.1	0
+135	218	18.1	0
+136	218	18.1	0
+137	218	18.1	0
+138	218	18.1	0
+138	218	18.1	0
+138	218	18.1	2
+139	218	18.1	3
+140	218	18.1	1
+140	393	20.000211258719	3
+141	218	18.1	0
+141	218	18.1	0
+141	393	20.000211258719	0
+141	393	20.000211258719	0
+142	218	18.1	15
+143	218	18.1	0
+143	218	18.1	0
+144	218	18.1	0
+144	218	18.1	0
+145	218	18.1	0
+145	218	18.1	0
+146	218	18.1	0
+147	218	18.1	0
+148	218	18.1	0
+149	218	18.1	0
+149	218	18.1	0
+149	218	18.1	2
+150	218	18.1	3
+151	218	18.1	1
+151	394	20.000211567746	3
+152	218	18.1	0
+152	218	18.1	0
+152	394	20.000211567746	0
+152	394	20.000211567746	0
+153	218	18.1	15
+154	243	20	100
+154	252	20	100
+155	245	20	108
+155	253	20	108
+156	247	20	128
+156	255	20	128
+157	247	20	128
+157	255	20	128
+158	250	20	130
+158	258	20	130
+159	250	20	1264
+159	258	20	1264
+160	250	0.2	0
+160	250	0.3	0
+160	250	0.4	0
+160	250	0.5	0
+160	250	0.6	0
+160	250	0.7	0
+160	250	0.8	0
+160	250	0.9	0
+160	250	1	0
+160	250	1.1	0
+160	250	1.2	0
+160	250	1.3	0
+160	250	1.4	0
+160	250	1.5	0
+160	250	1.6	0
+160	250	1.7	0
+160	250	1.8	0
+160	250	1.9	0
+160	250	2	0
+160	250	2.1	0
+160	250	2.2	0
+160	250	2.3	0
+160	250	2.4	0
+160	250	2.5	0
+160	250	2.6	0
+160	250	2.7	0
+160	250	2.8	0
+160	250	2.9	0
+160	250	3	0
+160	250	3.1	0
+160	250	3.2	0
+160	250	3.3	0
+160	250	3.4	0
+160	250	3.5	0
+160	250	3.6	0
+160	250	3.7	0
+160	250	3.8	0
+160	250	3.9	0
+160	250	4	0
+160	250	4.1	0
+160	250	4.2	0
+160	250	4.3	0
+160	250	4.4	0
+160	250	4.5	0
+160	250	4.6	0
+160	250	4.7	0
+160	250	4.8	0
+160	250	4.9	0
+160	250	5	0
+160	250	5.1	0
+160	250	5.2	0
+160	250	5.3	0
+160	250	5.4	0
+160	250	5.5	0
+160	250	5.6	0
+160	250	5.7	0
+160	250	5.8	0
+160	250	5.9	0
+160	250	6	0
+160	250	6.1	0
+160	250	6.2	0
+160	250	6.3	0
+160	250	6.4	0
+160	250	6.5	0
+160	250	6.6	0
+160	250	6.7	0
+160	250	6.8	0
+160	250	6.9	0
+160	250	7	0
+160	250	7.1	0
+160	250	7.2	0
+160	250	7.3	0
+160	250	7.4	0
+160	250	7.5	0
+160	250	7.6	0
+160	250	7.7	0
+160	250	7.8	0
+160	250	7.9	0
+160	250	8	0
+160	250	8.1	0
+160	250	8.2	0
+160	250	8.3	0
+160	250	8.4	0
+160	250	8.5	0
+160	250	8.6	0
+160	250	8.7	0
+160	250	8.8	0
+160	250	8.9	0
+160	250	9	0
+160	250	9.1	0
+160	250	9.2	0
+160	250	9.3	0
+160	250	9.4	0
+160	250	9.5	0
+160	250	9.6	0
+160	250	9.7	0
+160	250	9.8	0
+160	250	9.9	0
+160	250	10	0
+160	250	10.1	0
+160	250	10.2	0
+160	250	10.3	0
+160	250	10.4	0
+160	250	10.5	0
+160	250	10.6	0
+160	250	10.7	0
+160	250	10.8	0
+160	250	10.9	0
+160	250	11	0
+160	250	11.1	0
+160	250	11.2	0
+160	250	11.3	0
+160	250	11.4	0
+160	250	11.5	0
+160	250	11.6	0
+160	250	11.7	0
+160	250	11.8	0
+160	250	11.9	0
+160	250	12	0
+160	250	12.1	0
+160	250	12.2	0
+160	250	12.3	0
+160	250	12.4	0
+160	250	12.5	0
+160	250	12.6	0
+160	250	12.7	0
+160	250	12.8	0
+160	250	12.9	0
+160	250	13	0
+160	250	13.1	0
+160	250	13.2	0
+160	250	13.3	0
+160	250	13.4	0
+160	250	13.5	0
+160	250	13.6	0
+160	250	13.7	0
+160	250	13.8	0
+160	250	13.9	0
+160	250	14	0
+160	250	14.1	0
+160	250	14.2	0
+160	250	14.3	0
+160	250	14.4	0
+160	250	14.5	0
+160	250	14.6	0
+160	250	14.7	0
+160	250	14.8	0
+160	250	14.9	0
+160	250	15	0
+160	250	15.1	0
+160	250	15.2	0
+160	250	15.3	0
+160	250	15.4	0
+160	250	15.5	0
+160	250	15.6	0
+160	250	15.7	0
+160	250	15.8	0
+160	250	15.9	0
+160	250	16	0
+160	250	16.1	0
+160	250	16.2	0
+160	250	16.3	0
+160	250	16.4	0
+160	250	16.5	0
+160	250	16.6	0
+160	250	16.7	0
+160	250	16.8	0
+160	250	16.9	0
+160	250	17	0
+160	250	17.1	0
+160	250	17.2	0
+160	250	17.3	0
+160	250	17.4	0
+160	250	17.5	0
+160	250	17.6	0
+160	250	17.7	0
+160	250	17.8	0
+160	250	17.9	0
+160	250	18	0
+160	250	18.1	0
+160	250	18.2	0
+160	250	18.3	0
+160	250	18.4	0
+160	250	18.5	0
+160	250	18.6	0
+160	250	18.7	0
+160	250	18.8	0
+160	250	18.9	0
+160	250	19	0
+160	250	19.1	0
+160	250	19.2	0
+160	250	19.3	0
+160	250	19.4	0
+160	250	19.5	0
+160	250	19.6	0
+160	250	19.7	0
+160	250	19.8	0
+160	250	19.9	0
+160	250	20	0
+161	250	20	1
+161	258	20	2
+161	262	20	1
+161	262	20	0
+162	250	20	1264
+162	258	20	2528
+162	262	20	1264
+162	262	20	0
+163	250	20	8
+163	278	20.000152	1
+164	251	20	108
+164	259	20	108
+165	252	20	100
+165	260	20	100
+166	252	0.2	0
+166	252	0.3	0
+166	252	0.4	0
+166	252	0.5	0
+166	252	0.6	0
+166	252	0.7	0
+166	252	0.8	0
+166	252	0.9	0
+166	252	1	0
+166	252	1.1	0
+166	252	1.2	0
+166	252	1.3	0
+166	252	1.4	0
+166	252	1.5	0
+166	252	1.6	0
+166	252	1.7	0
+166	252	1.8	0
+166	252	1.9	0
+166	252	2	0
+166	252	2.1	0
+166	252	2.2	0
+166	252	2.3	0
+166	252	2.4	0
+166	252	2.5	0
+166	252	2.6	0
+166	252	2.7	0
+166	252	2.8	0
+166	252	2.9	0
+166	252	3	0
+166	252	3.1	0
+166	252	3.2	0
+166	252	3.3	0
+166	252	3.4	0
+166	252	3.5	0
+166	252	3.6	0
+166	252	3.7	0
+166	252	3.8	0
+166	252	3.9	0
+166	252	4	0
+166	252	4.1	0
+166	252	4.2	0
+166	252	4.3	0
+166	252	4.4	0
+166	252	4.5	0
+166	252	4.6	0
+166	252	4.7	0
+166	252	4.8	0
+166	252	4.9	0
+166	252	5	0
+166	252	5.1	0
+166	252	5.2	0
+166	252	5.3	0
+166	252	5.4	0
+166	252	5.5	0
+166	252	5.6	0
+166	252	5.7	0
+166	252	5.8	0
+166	252	5.9	0
+166	252	6	0
+166	252	6.1	0
+166	252	6.2	0
+166	252	6.3	0
+166	252	6.4	0
+166	252	6.5	0
+166	252	6.6	0
+166	252	6.7	0
+166	252	6.8	0
+166	252	6.9	0
+166	252	7	0
+166	252	7.1	0
+166	252	7.2	0
+166	252	7.3	0
+166	252	7.4	0
+166	252	7.5	0
+166	252	7.6	0
+166	252	7.7	0
+166	252	7.8	0
+166	252	7.9	0
+166	252	8	0
+166	252	8.1	0
+166	252	8.2	0
+166	252	8.3	0
+166	252	8.4	0
+166	252	8.5	0
+166	252	8.6	0
+166	252	8.7	0
+166	252	8.8	0
+166	252	8.9	0
+166	252	9	0
+166	252	9.1	0
+166	252	9.2	0
+166	252	9.3	0
+166	252	9.4	0
+166	252	9.5	0
+166	252	9.6	0
+166	252	9.7	0
+166	252	9.8	0
+166	252	9.9	0
+166	252	10	0
+166	252	10.1	0
+166	252	10.2	0
+166	252	10.3	0
+166	252	10.4	0
+166	252	10.5	0
+166	252	10.6	0
+166	252	10.7	0
+166	252	10.8	0
+166	252	10.9	0
+166	252	11	0
+166	252	11.1	0
+166	252	11.2	0
+166	252	11.3	0
+166	252	11.4	0
+166	252	11.5	0
+166	252	11.6	0
+166	252	11.7	0
+166	252	11.8	0
+166	252	11.9	0
+166	252	12	0
+166	252	12.1	0
+166	252	12.2	0
+166	252	12.3	0
+166	252	12.4	0
+166	252	12.5	0
+166	252	12.6	0
+166	252	12.7	0
+166	252	12.8	0
+166	252	12.9	0
+166	252	13	0
+166	252	13.1	0
+166	252	13.2	0
+166	252	13.3	0
+166	252	13.4	0
+166	252	13.5	0
+166	252	13.6	0
+166	252	13.7	0
+166	252	13.8	0
+166	252	13.9	0
+166	252	14	0
+166	252	14.1	0
+166	252	14.2	0
+166	252	14.3	0
+166	252	14.4	0
+166	252	14.5	0
+166	252	14.6	0
+166	252	14.7	0
+166	252	14.8	0
+166	252	14.9	0
+166	252	15	0
+166	252	15.1	0
+166	252	15.2	0
+166	252	15.3	0
+166	252	15.4	0
+166	252	15.5	0
+166	252	15.6	0
+166	252	15.7	0
+166	252	15.8	0
+166	252	15.9	0
+166	252	16	0
+166	252	16.1	0
+166	252	16.2	0
+166	252	16.3	0
+166	252	16.4	0
+166	252	16.5	0
+166	252	16.6	0
+166	252	16.7	0
+166	252	16.8	0
+166	252	16.9	0
+166	252	17	0
+166	252	17.1	0
+166	252	17.2	0
+166	252	17.3	0
+166	252	17.4	0
+166	252	17.5	0
+166	252	17.6	0
+166	252	17.7	0
+166	252	17.8	0
+166	252	17.9	0
+166	252	18	0
+166	252	18.1	0
+166	252	18.2	0
+166	252	18.3	0
+166	252	18.4	0
+166	252	18.5	0
+166	252	18.6	0
+166	252	18.7	0
+166	252	18.8	0
+166	252	18.9	0
+166	252	19	0
+166	252	19.1	0
+166	252	19.2	0
+166	252	19.3	0
+166	252	19.4	0
+166	252	19.5	0
+166	252	19.6	0
+166	252	19.7	0
+166	252	19.8	0
+166	252	19.9	0
+166	252	20	0
+167	252	20	0
+167	260	20	0
+168	262	20	0
+168	262	20	0
+169	262	20	1264
+169	262	20	1264
+170	262	0.2	0
+170	262	0.3	0
+170	262	0.4	0
+170	262	0.5	0
+170	262	0.6	0
+170	262	0.7	0
+170	262	0.8	0
+170	262	0.9	0
+170	262	1	0
+170	262	1.1	0
+170	262	1.2	0
+170	262	1.3	0
+170	262	1.4	0
+170	262	1.5	0
+170	262	1.6	0
+170	262	1.7	0
+170	262	1.8	0
+170	262	1.9	0
+170	262	2	0
+170	262	2.1	0
+170	262	2.2	0
+170	262	2.3	0
+170	262	2.4	0
+170	262	2.5	0
+170	262	2.6	0
+170	262	2.7	0
+170	262	2.8	0
+170	262	2.9	0
+170	262	3	0
+170	262	3.1	0
+170	262	3.2	0
+170	262	3.3	0
+170	262	3.4	0
+170	262	3.5	0
+170	262	3.6	0
+170	262	3.7	0
+170	262	3.8	0
+170	262	3.9	0
+170	262	4	0
+170	262	4.1	0
+170	262	4.2	0
+170	262	4.3	0
+170	262	4.4	0
+170	262	4.5	0
+170	262	4.6	0
+170	262	4.7	0
+170	262	4.8	0
+170	262	4.9	0
+170	262	5	0
+170	262	5.1	0
+170	262	5.2	0
+170	262	5.3	0
+170	262	5.4	0
+170	262	5.5	0
+170	262	5.6	0
+170	262	5.7	0
+170	262	5.8	0
+170	262	5.9	0
+170	262	6	0
+170	262	6.1	0
+170	262	6.2	0
+170	262	6.3	0
+170	262	6.4	0
+170	262	6.5	0
+170	262	6.6	0
+170	262	6.7	0
+170	262	6.8	0
+170	262	6.9	0
+170	262	7	0
+170	262	7.1	0
+170	262	7.2	0
+170	262	7.3	0
+170	262	7.4	0
+170	262	7.5	0
+170	262	7.6	0
+170	262	7.7	0
+170	262	7.8	0
+170	262	7.9	0
+170	262	8	0
+170	262	8.1	0
+170	262	8.2	0
+170	262	8.3	0
+170	262	8.4	0
+170	262	8.5	0
+170	262	8.6	0
+170	262	8.7	0
+170	262	8.8	0
+170	262	8.9	0
+170	262	9	0
+170	262	9.1	0
+170	262	9.2	0
+170	262	9.3	0
+170	262	9.4	0
+170	262	9.5	0
+170	262	9.6	0
+170	262	9.7	0
+170	262	9.8	0
+170	262	9.9	0
+170	262	10	0
+170	262	10.1	0
+170	262	10.2	0
+170	262	10.3	0
+170	262	10.4	0
+170	262	10.5	0
+170	262	10.6	0
+170	262	10.7	0
+170	262	10.8	0
+170	262	10.9	0
+170	262	11	0
+170	262	11.1	0
+170	262	11.2	0
+170	262	11.3	0
+170	262	11.4	0
+170	262	11.5	0
+170	262	11.6	0
+170	262	11.7	0
+170	262	11.8	0
+170	262	11.9	0
+170	262	12	0
+170	262	12.1	0
+170	262	12.2	0
+170	262	12.3	0
+170	262	12.4	0
+170	262	12.5	0
+170	262	12.6	0
+170	262	12.7	0
+170	262	12.8	0
+170	262	12.9	0
+170	262	13	0
+170	262	13.1	0
+170	262	13.2	0
+170	262	13.3	0
+170	262	13.4	0
+170	262	13.5	0
+170	262	13.6	0
+170	262	13.7	0
+170	262	13.8	0
+170	262	13.9	0
+170	262	14	0
+170	262	14.1	0
+170	262	14.2	0
+170	262	14.3	0
+170	262	14.4	0
+170	262	14.5	0
+170	262	14.6	0
+170	262	14.7	0
+170	262	14.8	0
+170	262	14.9	0
+170	262	15	0
+170	262	15.1	0
+170	262	15.2	0
+170	262	15.3	0
+170	262	15.4	0
+170	262	15.5	0
+170	262	15.6	0
+170	262	15.7	0
+170	262	15.8	0
+170	262	15.9	0
+170	262	16	0
+170	262	16.1	0
+170	262	16.2	0
+170	262	16.3	0
+170	262	16.4	0
+170	262	16.5	0
+170	262	16.6	0
+170	262	16.7	0
+170	262	16.8	0
+170	262	16.9	0
+170	262	17	0
+170	262	17.1	0
+170	262	17.2	0
+170	262	17.3	0
+170	262	17.4	0
+170	262	17.5	0
+170	262	17.6	0
+170	262	17.7	0
+170	262	17.8	0
+170	262	17.9	0
+170	262	18	0
+170	262	18.1	0
+170	262	18.2	0
+170	262	18.3	0
+170	262	18.4	0
+170	262	18.5	0
+170	262	18.6	0
+170	262	18.7	0
+170	262	18.8	0
+170	262	18.9	0
+170	262	19	0
+170	262	19.1	0
+170	262	19.2	0
+170	262	19.3	0
+170	262	19.4	0
+170	262	19.5	0
+170	262	19.6	0
+170	262	19.7	0
+170	262	19.8	0
+170	262	19.9	0
+170	262	20	0
+171	262	20	12000000
+172	262	20	158
+173	263	20	1
+173	264	20	2
+173	278	20.000152	1
+173	279	20.000152	0
+174	278	20.000152	158
+175	278	20.000152	158
+176	278	20.000152	158
+177	278	20.000152	0.000152
+178	281	20.000152106477	158
+179	281	20.000152106477	158
+180	281	20.000152106477	158
+181	281	20.000152106477	158
+182	281	20.000152106477	130
+183	284	20.000152106477	108
+183	292	20.000152106477	108
+184	285	20.000152106477	100
+184	293	20.000152106477	100
+185	285	3.2	0
+185	285	3.3	0
+185	285	3.4	0
+185	285	3.5	0
+185	285	3.6	0
+185	285	3.7	0
+185	285	3.8	0
+185	285	3.9	0
+185	285	4	0
+185	285	4.1	0
+185	285	4.2	0
+185	285	4.3	0
+185	285	4.4	0
+185	285	4.5	0
+185	285	4.6	0
+185	285	4.7	0
+185	285	4.8	0
+185	285	4.9	0
+185	285	5	0
+185	285	5.1	0
+185	285	5.2	0
+185	285	5.3	0
+185	285	5.4	0
+185	285	5.5	0
+185	285	5.6	0
+185	285	5.7	0
+185	285	5.8	0
+185	285	5.9	0
+185	285	6	0
+185	285	6.1	0
+185	285	6.2	0
+185	285	6.3	0
+185	285	6.4	0
+185	285	6.5	0
+185	285	6.6	0
+185	285	6.7	0
+185	285	6.8	0
+185	285	6.9	0
+185	285	7	0
+185	285	7.1	0
+185	285	7.2	0
+185	285	7.3	0
+185	285	7.4	0
+185	285	7.5	0
+185	285	7.6	0
+185	285	7.7	0
+185	285	7.8	0
+185	285	7.9	0
+185	285	8	0
+185	285	8.1	0
+185	285	8.2	0
+185	285	8.3	0
+185	285	8.4	0
+185	285	8.5	0
+185	285	8.6	0
+185	285	8.7	0
+185	285	8.8	0
+185	285	8.9	0
+185	285	9	0
+185	285	9.1	0
+185	285	9.2	0
+185	285	9.3	0
+185	285	9.4	0
+185	285	9.5	0
+185	285	9.6	0
+185	285	9.7	0
+185	285	9.8	0
+185	285	9.9	0
+185	285	10	0
+185	285	10.1	0
+185	285	10.2	0
+185	285	10.3	0
+185	285	10.4	0
+185	285	10.5	0
+185	285	10.6	0
+185	285	10.7	0
+185	285	10.8	0
+185	285	10.9	0
+185	285	11	0
+185	285	11.1	0
+185	285	11.2	0
+185	285	11.3	0
+185	285	11.4	0
+185	285	11.5	0
+185	285	11.6	0
+185	285	11.7	0
+185	285	11.8	0
+185	285	11.9	0
+185	285	12	0
+185	285	12.1	0
+185	285	12.2	0
+185	285	12.3	0
+185	285	12.4	0
+185	285	12.5	0
+185	285	12.6	0
+185	285	12.7	0
+185	285	12.8	0
+185	285	12.9	0
+185	285	13	0
+185	285	13.1	0
+185	285	13.2	0
+185	285	13.3	0
+185	285	13.4	0
+185	285	13.5	0
+185	285	13.6	0
+185	285	13.7	0
+185	285	13.8	0
+185	285	13.9	0
+185	285	14	0
+185	285	14.1	0
+185	285	14.2	0
+185	285	14.3	0
+185	285	14.4	0
+185	285	14.5	0
+185	285	14.6	0
+185	285	14.7	0
+185	285	14.8	0
+185	285	14.9	0
+185	285	15	0
+185	285	15.1	0
+185	285	15.2	0
+185	285	15.3	0
+185	285	15.4	0
+185	285	15.5	0
+185	285	15.6	0
+185	285	15.7	0
+185	285	15.8	0
+185	285	15.9	0
+185	285	16	0
+185	285	16.1	0
+185	285	16.2	0
+185	285	16.3	0
+185	285	16.4	0
+185	285	16.5	0
+185	285	16.6	0
+185	285	16.7	0
+185	285	16.8	0
+185	285	16.9	0
+185	285	17	0
+185	285	17.1	0
+185	285	17.2	0
+185	285	17.3	0
+185	285	17.4	0
+185	285	17.5	0
+185	285	17.6	0
+185	285	17.7	0
+185	285	17.8	0
+185	285	17.9	0
+185	285	18	0
+185	285	18.1	0
+185	285	18.2	0
+185	285	18.3	0
+185	285	18.4	0
+185	285	18.5	0
+185	285	18.6	0
+185	285	18.7	0
+185	285	18.8	0
+185	285	18.9	0
+185	285	19	0
+185	285	19.1	0
+185	285	19.2	0
+185	285	19.3	0
+185	285	19.4	0
+185	285	19.5	0
+185	285	19.6	0
+185	285	19.7	0
+185	285	19.8	0
+185	285	19.9	0
+185	285	20	0
+186	285	20.000152106477	0.000152106477
+186	293	20.000152106477	0.000152106477
+187	285	20.000152106477	100
+188	286	20.000152106477	108
+189	288	20.000152106477	128
+190	288	20.000152106477	128
+191	291	20.000152106477	130
+192	291	20.000152106477	1264
+193	291	3.2	0
+193	291	3.3	0
+193	291	3.4	0
+193	291	3.5	0
+193	291	3.6	0
+193	291	3.7	0
+193	291	3.8	0
+193	291	3.9	0
+193	291	4	0
+193	291	4.1	0
+193	291	4.2	0
+193	291	4.3	0
+193	291	4.4	0
+193	291	4.5	0
+193	291	4.6	0
+193	291	4.7	0
+193	291	4.8	0
+193	291	4.9	0
+193	291	5	0
+193	291	5.1	0
+193	291	5.2	0
+193	291	5.3	0
+193	291	5.4	0
+193	291	5.5	0
+193	291	5.6	0
+193	291	5.7	0
+193	291	5.8	0
+193	291	5.9	0
+193	291	6	0
+193	291	6.1	0
+193	291	6.2	0
+193	291	6.3	0
+193	291	6.4	0
+193	291	6.5	0
+193	291	6.6	0
+193	291	6.7	0
+193	291	6.8	0
+193	291	6.9	0
+193	291	7	0
+193	291	7.1	0
+193	291	7.2	0
+193	291	7.3	0
+193	291	7.4	0
+193	291	7.5	0
+193	291	7.6	0
+193	291	7.7	0
+193	291	7.8	0
+193	291	7.9	0
+193	291	8	0
+193	291	8.1	0
+193	291	8.2	0
+193	291	8.3	0
+193	291	8.4	0
+193	291	8.5	0
+193	291	8.6	0
+193	291	8.7	0
+193	291	8.8	0
+193	291	8.9	0
+193	291	9	0
+193	291	9.1	0
+193	291	9.2	0
+193	291	9.3	0
+193	291	9.4	0
+193	291	9.5	0
+193	291	9.6	0
+193	291	9.7	0
+193	291	9.8	0
+193	291	9.9	0
+193	291	10	0
+193	291	10.1	0
+193	291	10.2	0
+193	291	10.3	0
+193	291	10.4	0
+193	291	10.5	0
+193	291	10.6	0
+193	291	10.7	0
+193	291	10.8	0
+193	291	10.9	0
+193	291	11	0
+193	291	11.1	0
+193	291	11.2	0
+193	291	11.3	0
+193	291	11.4	0
+193	291	11.5	0
+193	291	11.6	0
+193	291	11.7	0
+193	291	11.8	0
+193	291	11.9	0
+193	291	12	0
+193	291	12.1	0
+193	291	12.2	0
+193	291	12.3	0
+193	291	12.4	0
+193	291	12.5	0
+193	291	12.6	0
+193	291	12.7	0
+193	291	12.8	0
+193	291	12.9	0
+193	291	13	0
+193	291	13.1	0
+193	291	13.2	0
+193	291	13.3	0
+193	291	13.4	0
+193	291	13.5	0
+193	291	13.6	0
+193	291	13.7	0
+193	291	13.8	0
+193	291	13.9	0
+193	291	14	0
+193	291	14.1	0
+193	291	14.2	0
+193	291	14.3	0
+193	291	14.4	0
+193	291	14.5	0
+193	291	14.6	0
+193	291	14.7	0
+193	291	14.8	0
+193	291	14.9	0
+193	291	15	0
+193	291	15.1	0
+193	291	15.2	0
+193	291	15.3	0
+193	291	15.4	0
+193	291	15.5	0
+193	291	15.6	0
+193	291	15.7	0
+193	291	15.8	0
+193	291	15.9	0
+193	291	16	0
+193	291	16.1	0
+193	291	16.2	0
+193	291	16.3	0
+193	291	16.4	0
+193	291	16.5	0
+193	291	16.6	0
+193	291	16.7	0
+193	291	16.8	0
+193	291	16.9	0
+193	291	17	0
+193	291	17.1	0
+193	291	17.2	0
+193	291	17.3	0
+193	291	17.4	0
+193	291	17.5	0
+193	291	17.6	0
+193	291	17.7	0
+193	291	17.8	0
+193	291	17.9	0
+193	291	18	0
+193	291	18.1	0
+193	291	18.2	0
+193	291	18.3	0
+193	291	18.4	0
+193	291	18.5	0
+193	291	18.6	0
+193	291	18.7	0
+193	291	18.8	0
+193	291	18.9	0
+193	291	19	0
+193	291	19.1	0
+193	291	19.2	0
+193	291	19.3	0
+193	291	19.4	0
+193	291	19.5	0
+193	291	19.6	0
+193	291	19.7	0
+193	291	19.8	0
+193	291	19.9	0
+193	291	20	0
+194	291	20.000152106477	1
+194	402	20.000249106477	0
+195	291	20.000152106477	1264
+195	402	20.000249106477	0
+196	291	20.000152106477	3
+197	295	20.000152281586	158
+198	295	20.000152281586	158
+199	295	20.000152281586	158
+200	295	20.000152281586	158
+201	295	20.000152281586	130
+202	298	20.000152281586	108
+202	306	20.000152281586	108
+203	299	20.000152281586	100
+203	307	20.000152281586	100
+204	299	6.2	0
+204	299	6.3	0
+204	299	6.4	0
+204	299	6.5	0
+204	299	6.6	0
+204	299	6.7	0
+204	299	6.8	0
+204	299	6.9	0
+204	299	7	0
+204	299	7.1	0
+204	299	7.2	0
+204	299	7.3	0
+204	299	7.4	0
+204	299	7.5	0
+204	299	7.6	0
+204	299	7.7	0
+204	299	7.8	0
+204	299	7.9	0
+204	299	8	0
+204	299	8.1	0
+204	299	8.2	0
+204	299	8.3	0
+204	299	8.4	0
+204	299	8.5	0
+204	299	8.6	0
+204	299	8.7	0
+204	299	8.8	0
+204	299	8.9	0
+204	299	9	0
+204	299	9.1	0
+204	299	9.2	0
+204	299	9.3	0
+204	299	9.4	0
+204	299	9.5	0
+204	299	9.6	0
+204	299	9.7	0
+204	299	9.8	0
+204	299	9.9	0
+204	299	10	0
+204	299	10.1	0
+204	299	10.2	0
+204	299	10.3	0
+204	299	10.4	0
+204	299	10.5	0
+204	299	10.6	0
+204	299	10.7	0
+204	299	10.8	0
+204	299	10.9	0
+204	299	11	0
+204	299	11.1	0
+204	299	11.2	0
+204	299	11.3	0
+204	299	11.4	0
+204	299	11.5	0
+204	299	11.6	0
+204	299	11.7	0
+204	299	11.8	0
+204	299	11.9	0
+204	299	12	0
+204	299	12.1	0
+204	299	12.2	0
+204	299	12.3	0
+204	299	12.4	0
+204	299	12.5	0
+204	299	12.6	0
+204	299	12.7	0
+204	299	12.8	0
+204	299	12.9	0
+204	299	13	0
+204	299	13.1	0
+204	299	13.2	0
+204	299	13.3	0
+204	299	13.4	0
+204	299	13.5	0
+204	299	13.6	0
+204	299	13.7	0
+204	299	13.8	0
+204	299	13.9	0
+204	299	14	0
+204	299	14.1	0
+204	299	14.2	0
+204	299	14.3	0
+204	299	14.4	0
+204	299	14.5	0
+204	299	14.6	0
+204	299	14.7	0
+204	299	14.8	0
+204	299	14.9	0
+204	299	15	0
+204	299	15.1	0
+204	299	15.2	0
+204	299	15.3	0
+204	299	15.4	0
+204	299	15.5	0
+204	299	15.6	0
+204	299	15.7	0
+204	299	15.8	0
+204	299	15.9	0
+204	299	16	0
+204	299	16.1	0
+204	299	16.2	0
+204	299	16.3	0
+204	299	16.4	0
+204	299	16.5	0
+204	299	16.6	0
+204	299	16.7	0
+204	299	16.8	0
+204	299	16.9	0
+204	299	17	0
+204	299	17.1	0
+204	299	17.2	0
+204	299	17.3	0
+204	299	17.4	0
+204	299	17.5	0
+204	299	17.6	0
+204	299	17.7	0
+204	299	17.8	0
+204	299	17.9	0
+204	299	18	0
+204	299	18.1	0
+204	299	18.2	0
+204	299	18.3	0
+204	299	18.4	0
+204	299	18.5	0
+204	299	18.6	0
+204	299	18.7	0
+204	299	18.8	0
+204	299	18.9	0
+204	299	19	0
+204	299	19.1	0
+204	299	19.2	0
+204	299	19.3	0
+204	299	19.4	0
+204	299	19.5	0
+204	299	19.6	0
+204	299	19.7	0
+204	299	19.8	0
+204	299	19.9	0
+204	299	20	0
+205	299	20.000152281586	0.000152281586
+205	307	20.000152281586	0.000152281586
+206	299	20.000152281586	100
+207	300	20.000152281586	108
+208	302	20.000152281586	128
+209	302	20.000152281586	128
+210	305	20.000152281586	130
+211	305	20.000152281586	1264
+212	305	6.2	0
+212	305	6.3	0
+212	305	6.4	0
+212	305	6.5	0
+212	305	6.6	0
+212	305	6.7	0
+212	305	6.8	0
+212	305	6.9	0
+212	305	7	0
+212	305	7.1	0
+212	305	7.2	0
+212	305	7.3	0
+212	305	7.4	0
+212	305	7.5	0
+212	305	7.6	0
+212	305	7.7	0
+212	305	7.8	0
+212	305	7.9	0
+212	305	8	0
+212	305	8.1	0
+212	305	8.2	0
+212	305	8.3	0
+212	305	8.4	0
+212	305	8.5	0
+212	305	8.6	0
+212	305	8.7	0
+212	305	8.8	0
+212	305	8.9	0
+212	305	9	0
+212	305	9.1	0
+212	305	9.2	0
+212	305	9.3	0
+212	305	9.4	0
+212	305	9.5	0
+212	305	9.6	0
+212	305	9.7	0
+212	305	9.8	0
+212	305	9.9	0
+212	305	10	0
+212	305	10.1	0
+212	305	10.2	0
+212	305	10.3	0
+212	305	10.4	0
+212	305	10.5	0
+212	305	10.6	0
+212	305	10.7	0
+212	305	10.8	0
+212	305	10.9	0
+212	305	11	0
+212	305	11.1	0
+212	305	11.2	0
+212	305	11.3	0
+212	305	11.4	0
+212	305	11.5	0
+212	305	11.6	0
+212	305	11.7	0
+212	305	11.8	0
+212	305	11.9	0
+212	305	12	0
+212	305	12.1	0
+212	305	12.2	0
+212	305	12.3	0
+212	305	12.4	0
+212	305	12.5	0
+212	305	12.6	0
+212	305	12.7	0
+212	305	12.8	0
+212	305	12.9	0
+212	305	13	0
+212	305	13.1	0
+212	305	13.2	0
+212	305	13.3	0
+212	305	13.4	0
+212	305	13.5	0
+212	305	13.6	0
+212	305	13.7	0
+212	305	13.8	0
+212	305	13.9	0
+212	305	14	0
+212	305	14.1	0
+212	305	14.2	0
+212	305	14.3	0
+212	305	14.4	0
+212	305	14.5	0
+212	305	14.6	0
+212	305	14.7	0
+212	305	14.8	0
+212	305	14.9	0
+212	305	15	0
+212	305	15.1	0
+212	305	15.2	0
+212	305	15.3	0
+212	305	15.4	0
+212	305	15.5	0
+212	305	15.6	0
+212	305	15.7	0
+212	305	15.8	0
+212	305	15.9	0
+212	305	16	0
+212	305	16.1	0
+212	305	16.2	0
+212	305	16.3	0
+212	305	16.4	0
+212	305	16.5	0
+212	305	16.6	0
+212	305	16.7	0
+212	305	16.8	0
+212	305	16.9	0
+212	305	17	0
+212	305	17.1	0
+212	305	17.2	0
+212	305	17.3	0
+212	305	17.4	0
+212	305	17.5	0
+212	305	17.6	0
+212	305	17.7	0
+212	305	17.8	0
+212	305	17.9	0
+212	305	18	0
+212	305	18.1	0
+212	305	18.2	0
+212	305	18.3	0
+212	305	18.4	0
+212	305	18.5	0
+212	305	18.6	0
+212	305	18.7	0
+212	305	18.8	0
+212	305	18.9	0
+212	305	19	0
+212	305	19.1	0
+212	305	19.2	0
+212	305	19.3	0
+212	305	19.4	0
+212	305	19.5	0
+212	305	19.6	0
+212	305	19.7	0
+212	305	19.8	0
+212	305	19.9	0
+212	305	20	0
+213	305	20.000152281586	1
+214	305	20.000152281586	1264
+215	305	20.000152281586	13
+216	309	20.000152321838	158
+217	309	20.000152321838	158
+218	309	20.000152321838	158
+219	309	20.000152321838	158
+220	309	20.000152321838	130
+221	312	20.000152321838	108
+221	320	20.000152321838	108
+222	313	20.000152321838	100
+222	321	20.000152321838	100
+223	313	9.2	0
+223	313	9.3	0
+223	313	9.4	0
+223	313	9.5	0
+223	313	9.6	0
+223	313	9.7	0
+223	313	9.8	0
+223	313	9.9	0
+223	313	10	0
+223	313	10.1	0
+223	313	10.2	0
+223	313	10.3	0
+223	313	10.4	0
+223	313	10.5	0
+223	313	10.6	0
+223	313	10.7	0
+223	313	10.8	0
+223	313	10.9	0
+223	313	11	0
+223	313	11.1	0
+223	313	11.2	0
+223	313	11.3	0
+223	313	11.4	0
+223	313	11.5	0
+223	313	11.6	0
+223	313	11.7	0
+223	313	11.8	0
+223	313	11.9	0
+223	313	12	0
+223	313	12.1	0
+223	313	12.2	0
+223	313	12.3	0
+223	313	12.4	0
+223	313	12.5	0
+223	313	12.6	0
+223	313	12.7	0
+223	313	12.8	0
+223	313	12.9	0
+223	313	13	0
+223	313	13.1	0
+223	313	13.2	0
+223	313	13.3	0
+223	313	13.4	0
+223	313	13.5	0
+223	313	13.6	0
+223	313	13.7	0
+223	313	13.8	0
+223	313	13.9	0
+223	313	14	0
+223	313	14.1	0
+223	313	14.2	0
+223	313	14.3	0
+223	313	14.4	0
+223	313	14.5	0
+223	313	14.6	0
+223	313	14.7	0
+223	313	14.8	0
+223	313	14.9	0
+223	313	15	0
+223	313	15.1	0
+223	313	15.2	0
+223	313	15.3	0
+223	313	15.4	0
+223	313	15.5	0
+223	313	15.6	0
+223	313	15.7	0
+223	313	15.8	0
+223	313	15.9	0
+223	313	16	0
+223	313	16.1	0
+223	313	16.2	0
+223	313	16.3	0
+223	313	16.4	0
+223	313	16.5	0
+223	313	16.6	0
+223	313	16.7	0
+223	313	16.8	0
+223	313	16.9	0
+223	313	17	0
+223	313	17.1	0
+223	313	17.2	0
+223	313	17.3	0
+223	313	17.4	0
+223	313	17.5	0
+223	313	17.6	0
+223	313	17.7	0
+223	313	17.8	0
+223	313	17.9	0
+223	313	18	0
+223	313	18.1	0
+223	313	18.2	0
+223	313	18.3	0
+223	313	18.4	0
+223	313	18.5	0
+223	313	18.6	0
+223	313	18.7	0
+223	313	18.8	0
+223	313	18.9	0
+223	313	19	0
+223	313	19.1	0
+223	313	19.2	0
+223	313	19.3	0
+223	313	19.4	0
+223	313	19.5	0
+223	313	19.6	0
+223	313	19.7	0
+223	313	19.8	0
+223	313	19.9	0
+223	313	20	0
+224	313	20.000152321838	0.000152321838
+224	321	20.000152321838	0.000152321838
+225	313	20.000152321838	100
+226	314	20.000152321838	108
+227	316	20.000152321838	128
+228	316	20.000152321838	128
+229	319	20.000152321838	130
+230	319	20.000152321838	1264
+231	319	9.2	0
+231	319	9.3	0
+231	319	9.4	0
+231	319	9.5	0
+231	319	9.6	0
+231	319	9.7	0
+231	319	9.8	0
+231	319	9.9	0
+231	319	10	0
+231	319	10.1	0
+231	319	10.2	0
+231	319	10.3	0
+231	319	10.4	0
+231	319	10.5	0
+231	319	10.6	0
+231	319	10.7	0
+231	319	10.8	0
+231	319	10.9	0
+231	319	11	0
+231	319	11.1	0
+231	319	11.2	0
+231	319	11.3	0
+231	319	11.4	0
+231	319	11.5	0
+231	319	11.6	0
+231	319	11.7	0
+231	319	11.8	0
+231	319	11.9	0
+231	319	12	0
+231	319	12.1	0
+231	319	12.2	0
+231	319	12.3	0
+231	319	12.4	0
+231	319	12.5	0
+231	319	12.6	0
+231	319	12.7	0
+231	319	12.8	0
+231	319	12.9	0
+231	319	13	0
+231	319	13.1	0
+231	319	13.2	0
+231	319	13.3	0
+231	319	13.4	0
+231	319	13.5	0
+231	319	13.6	0
+231	319	13.7	0
+231	319	13.8	0
+231	319	13.9	0
+231	319	14	0
+231	319	14.1	0
+231	319	14.2	0
+231	319	14.3	0
+231	319	14.4	0
+231	319	14.5	0
+231	319	14.6	0
+231	319	14.7	0
+231	319	14.8	0
+231	319	14.9	0
+231	319	15	0
+231	319	15.1	0
+231	319	15.2	0
+231	319	15.3	0
+231	319	15.4	0
+231	319	15.5	0
+231	319	15.6	0
+231	319	15.7	0
+231	319	15.8	0
+231	319	15.9	0
+231	319	16	0
+231	319	16.1	0
+231	319	16.2	0
+231	319	16.3	0
+231	319	16.4	0
+231	319	16.5	0
+231	319	16.6	0
+231	319	16.7	0
+231	319	16.8	0
+231	319	16.9	0
+231	319	17	0
+231	319	17.1	0
+231	319	17.2	0
+231	319	17.3	0
+231	319	17.4	0
+231	319	17.5	0
+231	319	17.6	0
+231	319	17.7	0
+231	319	17.8	0
+231	319	17.9	0
+231	319	18	0
+231	319	18.1	0
+231	319	18.2	0
+231	319	18.3	0
+231	319	18.4	0
+231	319	18.5	0
+231	319	18.6	0
+231	319	18.7	0
+231	319	18.8	0
+231	319	18.9	0
+231	319	19	0
+231	319	19.1	0
+231	319	19.2	0
+231	319	19.3	0
+231	319	19.4	0
+231	319	19.5	0
+231	319	19.6	0
+231	319	19.7	0
+231	319	19.8	0
+231	319	19.9	0
+231	319	20	0
+232	319	20.000152321838	1
+232	408	20.000249321838	0
+233	319	20.000152321838	1264
+233	408	20.000249321838	0
+234	319	20.000152321838	3
+235	326	20.000152667952	158
+236	326	20.000152667952	158
+237	326	20.000152667952	158
+238	326	20.000152667952	158
+239	326	20.000152667952	130
+240	329	20.000152667952	108
+240	337	20.000152667952	108
+241	330	20.000152667952	100
+241	338	20.000152667952	100
+242	330	9.2	0
+242	330	9.3	0
+242	330	9.4	0
+242	330	9.5	0
+242	330	9.6	0
+242	330	9.7	0
+242	330	9.8	0
+242	330	9.9	0
+242	330	10	0
+242	330	10.1	0
+242	330	10.2	0
+242	330	10.3	0
+242	330	10.4	0
+242	330	10.5	0
+242	330	10.6	0
+242	330	10.7	0
+242	330	10.8	0
+242	330	10.9	0
+242	330	11	0
+242	330	11.1	0
+242	330	11.2	0
+242	330	11.3	0
+242	330	11.4	0
+242	330	11.5	0
+242	330	11.6	0
+242	330	11.7	0
+242	330	11.8	0
+242	330	11.9	0
+242	330	12	0
+242	330	12.1	0
+242	330	12.2	0
+242	330	12.3	0
+242	330	12.4	0
+242	330	12.5	0
+242	330	12.6	0
+242	330	12.7	0
+242	330	12.8	0
+242	330	12.9	0
+242	330	13	0
+242	330	13.1	0
+242	330	13.2	0
+242	330	13.3	0
+242	330	13.4	0
+242	330	13.5	0
+242	330	13.6	0
+242	330	13.7	0
+242	330	13.8	0
+242	330	13.9	0
+242	330	14	0
+242	330	14.1	0
+242	330	14.2	0
+242	330	14.3	0
+242	330	14.4	0
+242	330	14.5	0
+242	330	14.6	0
+242	330	14.7	0
+242	330	14.8	0
+242	330	14.9	0
+242	330	15	0
+242	330	15.1	0
+242	330	15.2	0
+242	330	15.3	0
+242	330	15.4	0
+242	330	15.5	0
+242	330	15.6	0
+242	330	15.7	0
+242	330	15.8	0
+242	330	15.9	0
+242	330	16	0
+242	330	16.1	0
+242	330	16.2	0
+242	330	16.3	0
+242	330	16.4	0
+242	330	16.5	0
+242	330	16.6	0
+242	330	16.7	0
+242	330	16.8	0
+242	330	16.9	0
+242	330	17	0
+242	330	17.1	0
+242	330	17.2	0
+242	330	17.3	0
+242	330	17.4	0
+242	330	17.5	0
+242	330	17.6	0
+242	330	17.7	0
+242	330	17.8	0
+242	330	17.9	0
+242	330	18	0
+242	330	18.1	0
+242	330	18.2	0
+242	330	18.3	0
+242	330	18.4	0
+242	330	18.5	0
+242	330	18.6	0
+242	330	18.7	0
+242	330	18.8	0
+242	330	18.9	0
+242	330	19	0
+242	330	19.1	0
+242	330	19.2	0
+242	330	19.3	0
+242	330	19.4	0
+242	330	19.5	0
+242	330	19.6	0
+242	330	19.7	0
+242	330	19.8	0
+242	330	19.9	0
+242	330	20	0
+243	330	20.000152667952	0.000152667952
+243	338	20.000152667952	0.000152667952
+244	330	20.000152667952	100
+245	331	20.000152667952	108
+246	333	20.000152667952	128
+247	333	20.000152667952	128
+248	336	20.000152667952	130
+249	336	20.000152667952	1264
+250	336	9.2	0
+250	336	9.3	0
+250	336	9.4	0
+250	336	9.5	0
+250	336	9.6	0
+250	336	9.7	0
+250	336	9.8	0
+250	336	9.9	0
+250	336	10	0
+250	336	10.1	0
+250	336	10.2	0
+250	336	10.3	0
+250	336	10.4	0
+250	336	10.5	0
+250	336	10.6	0
+250	336	10.7	0
+250	336	10.8	0
+250	336	10.9	0
+250	336	11	0
+250	336	11.1	0
+250	336	11.2	0
+250	336	11.3	0
+250	336	11.4	0
+250	336	11.5	0
+250	336	11.6	0
+250	336	11.7	0
+250	336	11.8	0
+250	336	11.9	0
+250	336	12	0
+250	336	12.1	0
+250	336	12.2	0
+250	336	12.3	0
+250	336	12.4	0
+250	336	12.5	0
+250	336	12.6	0
+250	336	12.7	0
+250	336	12.8	0
+250	336	12.9	0
+250	336	13	0
+250	336	13.1	0
+250	336	13.2	0
+250	336	13.3	0
+250	336	13.4	0
+250	336	13.5	0
+250	336	13.6	0
+250	336	13.7	0
+250	336	13.8	0
+250	336	13.9	0
+250	336	14	0
+250	336	14.1	0
+250	336	14.2	0
+250	336	14.3	0
+250	336	14.4	0
+250	336	14.5	0
+250	336	14.6	0
+250	336	14.7	0
+250	336	14.8	0
+250	336	14.9	0
+250	336	15	0
+250	336	15.1	0
+250	336	15.2	0
+250	336	15.3	0
+250	336	15.4	0
+250	336	15.5	0
+250	336	15.6	0
+250	336	15.7	0
+250	336	15.8	0
+250	336	15.9	0
+250	336	16	0
+250	336	16.1	0
+250	336	16.2	0
+250	336	16.3	0
+250	336	16.4	0
+250	336	16.5	0
+250	336	16.6	0
+250	336	16.7	0
+250	336	16.8	0
+250	336	16.9	0
+250	336	17	0
+250	336	17.1	0
+250	336	17.2	0
+250	336	17.3	0
+250	336	17.4	0
+250	336	17.5	0
+250	336	17.6	0
+250	336	17.7	0
+250	336	17.8	0
+250	336	17.9	0
+250	336	18	0
+250	336	18.1	0
+250	336	18.2	0
+250	336	18.3	0
+250	336	18.4	0
+250	336	18.5	0
+250	336	18.6	0
+250	336	18.7	0
+250	336	18.8	0
+250	336	18.9	0
+250	336	19	0
+250	336	19.1	0
+250	336	19.2	0
+250	336	19.3	0
+250	336	19.4	0
+250	336	19.5	0
+250	336	19.6	0
+250	336	19.7	0
+250	336	19.8	0
+250	336	19.9	0
+250	336	20	0
+251	336	20.000152667952	1
+252	336	20.000152667952	1264
+253	336	20.000152667952	3
+254	342	20.000152711376	158
+255	342	20.000152711376	158
+256	342	20.000152711376	158
+257	342	20.000152711376	158
+258	342	20.000152711376	130
+259	345	20.000152711376	108
+259	353	20.000152711376	108
+260	346	20.000152711376	100
+260	354	20.000152711376	100
+261	346	6.2	0
+261	346	6.3	0
+261	346	6.4	0
+261	346	6.5	0
+261	346	6.6	0
+261	346	6.7	0
+261	346	6.8	0
+261	346	6.9	0
+261	346	7	0
+261	346	7.1	0
+261	346	7.2	0
+261	346	7.3	0
+261	346	7.4	0
+261	346	7.5	0
+261	346	7.6	0
+261	346	7.7	0
+261	346	7.8	0
+261	346	7.9	0
+261	346	8	0
+261	346	8.1	0
+261	346	8.2	0
+261	346	8.3	0
+261	346	8.4	0
+261	346	8.5	0
+261	346	8.6	0
+261	346	8.7	0
+261	346	8.8	0
+261	346	8.9	0
+261	346	9	0
+261	346	9.1	0
+261	346	9.2	0
+261	346	9.3	0
+261	346	9.4	0
+261	346	9.5	0
+261	346	9.6	0
+261	346	9.7	0
+261	346	9.8	0
+261	346	9.9	0
+261	346	10	0
+261	346	10.1	0
+261	346	10.2	0
+261	346	10.3	0
+261	346	10.4	0
+261	346	10.5	0
+261	346	10.6	0
+261	346	10.7	0
+261	346	10.8	0
+261	346	10.9	0
+261	346	11	0
+261	346	11.1	0
+261	346	11.2	0
+261	346	11.3	0
+261	346	11.4	0
+261	346	11.5	0
+261	346	11.6	0
+261	346	11.7	0
+261	346	11.8	0
+261	346	11.9	0
+261	346	12	0
+261	346	12.1	0
+261	346	12.2	0
+261	346	12.3	0
+261	346	12.4	0
+261	346	12.5	0
+261	346	12.6	0
+261	346	12.7	0
+261	346	12.8	0
+261	346	12.9	0
+261	346	13	0
+261	346	13.1	0
+261	346	13.2	0
+261	346	13.3	0
+261	346	13.4	0
+261	346	13.5	0
+261	346	13.6	0
+261	346	13.7	0
+261	346	13.8	0
+261	346	13.9	0
+261	346	14	0
+261	346	14.1	0
+261	346	14.2	0
+261	346	14.3	0
+261	346	14.4	0
+261	346	14.5	0
+261	346	14.6	0
+261	346	14.7	0
+261	346	14.8	0
+261	346	14.9	0
+261	346	15	0
+261	346	15.1	0
+261	346	15.2	0
+261	346	15.3	0
+261	346	15.4	0
+261	346	15.5	0
+261	346	15.6	0
+261	346	15.7	0
+261	346	15.8	0
+261	346	15.9	0
+261	346	16	0
+261	346	16.1	0
+261	346	16.2	0
+261	346	16.3	0
+261	346	16.4	0
+261	346	16.5	0
+261	346	16.6	0
+261	346	16.7	0
+261	346	16.8	0
+261	346	16.9	0
+261	346	17	0
+261	346	17.1	0
+261	346	17.2	0
+261	346	17.3	0
+261	346	17.4	0
+261	346	17.5	0
+261	346	17.6	0
+261	346	17.7	0
+261	346	17.8	0
+261	346	17.9	0
+261	346	18	0
+261	346	18.1	0
+261	346	18.2	0
+261	346	18.3	0
+261	346	18.4	0
+261	346	18.5	0
+261	346	18.6	0
+261	346	18.7	0
+261	346	18.8	0
+261	346	18.9	0
+261	346	19	0
+261	346	19.1	0
+261	346	19.2	0
+261	346	19.3	0
+261	346	19.4	0
+261	346	19.5	0
+261	346	19.6	0
+261	346	19.7	0
+261	346	19.8	0
+261	346	19.9	0
+261	346	20	0
+262	346	20.000152711376	0.000152711376
+262	354	20.000152711376	0.000152711376
+263	346	20.000152711376	100
+264	347	20.000152711376	108
+265	349	20.000152711376	128
+266	349	20.000152711376	128
+267	352	20.000152711376	130
+268	352	20.000152711376	1264
+269	352	6.2	0
+269	352	6.3	0
+269	352	6.4	0
+269	352	6.5	0
+269	352	6.6	0
+269	352	6.7	0
+269	352	6.8	0
+269	352	6.9	0
+269	352	7	0
+269	352	7.1	0
+269	352	7.2	0
+269	352	7.3	0
+269	352	7.4	0
+269	352	7.5	0
+269	352	7.6	0
+269	352	7.7	0
+269	352	7.8	0
+269	352	7.9	0
+269	352	8	0
+269	352	8.1	0
+269	352	8.2	0
+269	352	8.3	0
+269	352	8.4	0
+269	352	8.5	0
+269	352	8.6	0
+269	352	8.7	0
+269	352	8.8	0
+269	352	8.9	0
+269	352	9	0
+269	352	9.1	0
+269	352	9.2	0
+269	352	9.3	0
+269	352	9.4	0
+269	352	9.5	0
+269	352	9.6	0
+269	352	9.7	0
+269	352	9.8	0
+269	352	9.9	0
+269	352	10	0
+269	352	10.1	0
+269	352	10.2	0
+269	352	10.3	0
+269	352	10.4	0
+269	352	10.5	0
+269	352	10.6	0
+269	352	10.7	0
+269	352	10.8	0
+269	352	10.9	0
+269	352	11	0
+269	352	11.1	0
+269	352	11.2	0
+269	352	11.3	0
+269	352	11.4	0
+269	352	11.5	0
+269	352	11.6	0
+269	352	11.7	0
+269	352	11.8	0
+269	352	11.9	0
+269	352	12	0
+269	352	12.1	0
+269	352	12.2	0
+269	352	12.3	0
+269	352	12.4	0
+269	352	12.5	0
+269	352	12.6	0
+269	352	12.7	0
+269	352	12.8	0
+269	352	12.9	0
+269	352	13	0
+269	352	13.1	0
+269	352	13.2	0
+269	352	13.3	0
+269	352	13.4	0
+269	352	13.5	0
+269	352	13.6	0
+269	352	13.7	0
+269	352	13.8	0
+269	352	13.9	0
+269	352	14	0
+269	352	14.1	0
+269	352	14.2	0
+269	352	14.3	0
+269	352	14.4	0
+269	352	14.5	0
+269	352	14.6	0
+269	352	14.7	0
+269	352	14.8	0
+269	352	14.9	0
+269	352	15	0
+269	352	15.1	0
+269	352	15.2	0
+269	352	15.3	0
+269	352	15.4	0
+269	352	15.5	0
+269	352	15.6	0
+269	352	15.7	0
+269	352	15.8	0
+269	352	15.9	0
+269	352	16	0
+269	352	16.1	0
+269	352	16.2	0
+269	352	16.3	0
+269	352	16.4	0
+269	352	16.5	0
+269	352	16.6	0
+269	352	16.7	0
+269	352	16.8	0
+269	352	16.9	0
+269	352	17	0
+269	352	17.1	0
+269	352	17.2	0
+269	352	17.3	0
+269	352	17.4	0
+269	352	17.5	0
+269	352	17.6	0
+269	352	17.7	0
+269	352	17.8	0
+269	352	17.9	0
+269	352	18	0
+269	352	18.1	0
+269	352	18.2	0
+269	352	18.3	0
+269	352	18.4	0
+269	352	18.5	0
+269	352	18.6	0
+269	352	18.7	0
+269	352	18.8	0
+269	352	18.9	0
+269	352	19	0
+269	352	19.1	0
+269	352	19.2	0
+269	352	19.3	0
+269	352	19.4	0
+269	352	19.5	0
+269	352	19.6	0
+269	352	19.7	0
+269	352	19.8	0
+269	352	19.9	0
+269	352	20	0
+270	352	20.000152711376	1
+271	352	20.000152711376	1264
+272	352	20.000152711376	14
+273	357	20.000152816883	158
+273	438	20.000362957012	158
+274	357	20.000152816883	158
+274	438	20.000362957012	158
+275	357	20.000152816883	158
+275	438	20.000362957012	158
+276	357	20.000152816883	158
+276	438	20.000362957012	158
+277	357	20.000152816883	130
+277	438	20.000362957012	130
+278	360	20.000152816883	108
+278	368	20.000152816883	108
+278	441	20.000362957012	108
+279	361	20.000152816883	100
+279	369	20.000152816883	100
+279	442	20.000362957012	100
+280	361	3.2	0
+280	361	3.3	0
+280	361	3.4	0
+280	361	3.5	0
+280	361	3.6	0
+280	361	3.7	0
+280	361	3.8	0
+280	361	3.9	0
+280	361	4	0
+280	361	4.1	0
+280	361	4.2	0
+280	361	4.3	0
+280	361	4.4	0
+280	361	4.5	0
+280	361	4.6	0
+280	361	4.7	0
+280	361	4.8	0
+280	361	4.9	0
+280	361	5	0
+280	361	5.1	0
+280	361	5.2	0
+280	361	5.3	0
+280	361	5.4	0
+280	361	5.5	0
+280	361	5.6	0
+280	361	5.7	0
+280	361	5.8	0
+280	361	5.9	0
+280	361	6	0
+280	361	6.1	0
+280	361	6.2	0
+280	361	6.3	0
+280	361	6.4	0
+280	361	6.5	0
+280	361	6.6	0
+280	361	6.7	0
+280	361	6.8	0
+280	361	6.9	0
+280	361	7	0
+280	361	7.1	0
+280	361	7.2	0
+280	361	7.3	0
+280	361	7.4	0
+280	361	7.5	0
+280	361	7.6	0
+280	361	7.7	0
+280	361	7.8	0
+280	361	7.9	0
+280	361	8	0
+280	361	8.1	0
+280	361	8.2	0
+280	361	8.3	0
+280	361	8.4	0
+280	361	8.5	0
+280	361	8.6	0
+280	361	8.7	0
+280	361	8.8	0
+280	361	8.9	0
+280	361	9	0
+280	361	9.1	0
+280	361	9.2	0
+280	361	9.3	0
+280	361	9.4	0
+280	361	9.5	0
+280	361	9.6	0
+280	361	9.7	0
+280	361	9.8	0
+280	361	9.9	0
+280	361	10	0
+280	361	10.1	0
+280	361	10.2	0
+280	361	10.3	0
+280	361	10.4	0
+280	361	10.5	0
+280	361	10.6	0
+280	361	10.7	0
+280	361	10.8	0
+280	361	10.9	0
+280	361	11	0
+280	361	11.1	0
+280	361	11.2	0
+280	361	11.3	0
+280	361	11.4	0
+280	361	11.5	0
+280	361	11.6	0
+280	361	11.7	0
+280	361	11.8	0
+280	361	11.9	0
+280	361	12	0
+280	361	12.1	0
+280	361	12.2	0
+280	361	12.3	0
+280	361	12.4	0
+280	361	12.5	0
+280	361	12.6	0
+280	361	12.7	0
+280	361	12.8	0
+280	361	12.9	0
+280	361	13	0
+280	361	13.1	0
+280	361	13.2	0
+280	361	13.3	0
+280	361	13.4	0
+280	361	13.5	0
+280	361	13.6	0
+280	361	13.7	0
+280	361	13.8	0
+280	361	13.9	0
+280	361	14	0
+280	361	14.1	0
+280	361	14.2	0
+280	361	14.3	0
+280	361	14.4	0
+280	361	14.5	0
+280	361	14.6	0
+280	361	14.7	0
+280	361	14.8	0
+280	361	14.9	0
+280	361	15	0
+280	361	15.1	0
+280	361	15.2	0
+280	361	15.3	0
+280	361	15.4	0
+280	361	15.5	0
+280	361	15.6	0
+280	361	15.7	0
+280	361	15.8	0
+280	361	15.9	0
+280	361	16	0
+280	361	16.1	0
+280	361	16.2	0
+280	361	16.3	0
+280	361	16.4	0
+280	361	16.5	0
+280	361	16.6	0
+280	361	16.7	0
+280	361	16.8	0
+280	361	16.9	0
+280	361	17	0
+280	361	17.1	0
+280	361	17.2	0
+280	361	17.3	0
+280	361	17.4	0
+280	361	17.5	0
+280	361	17.6	0
+280	361	17.7	0
+280	361	17.8	0
+280	361	17.9	0
+280	361	18	0
+280	361	18.1	0
+280	361	18.2	0
+280	361	18.3	0
+280	361	18.4	0
+280	361	18.5	0
+280	361	18.6	0
+280	361	18.7	0
+280	361	18.8	0
+280	361	18.9	0
+280	361	19	0
+280	361	19.1	0
+280	361	19.2	0
+280	361	19.3	0
+280	361	19.4	0
+280	361	19.5	0
+280	361	19.6	0
+280	361	19.7	0
+280	361	19.8	0
+280	361	19.9	0
+280	361	20	0
+281	361	20.000152816883	0.000152816883
+281	369	20.000152816883	0.000152816883
+281	442	20.000362957012	0.000362957012
+282	361	20.000152816883	100
+283	362	20.000152816883	108
+284	364	20.000152816883	128
+285	364	20.000152816883	128
+286	367	20.000152816883	130
+287	367	20.000152816883	1264
+288	367	3.2	0
+288	367	3.3	0
+288	367	3.4	0
+288	367	3.5	0
+288	367	3.6	0
+288	367	3.7	0
+288	367	3.8	0
+288	367	3.9	0
+288	367	4	0
+288	367	4.1	0
+288	367	4.2	0
+288	367	4.3	0
+288	367	4.4	0
+288	367	4.5	0
+288	367	4.6	0
+288	367	4.7	0
+288	367	4.8	0
+288	367	4.9	0
+288	367	5	0
+288	367	5.1	0
+288	367	5.2	0
+288	367	5.3	0
+288	367	5.4	0
+288	367	5.5	0
+288	367	5.6	0
+288	367	5.7	0
+288	367	5.8	0
+288	367	5.9	0
+288	367	6	0
+288	367	6.1	0
+288	367	6.2	0
+288	367	6.3	0
+288	367	6.4	0
+288	367	6.5	0
+288	367	6.6	0
+288	367	6.7	0
+288	367	6.8	0
+288	367	6.9	0
+288	367	7	0
+288	367	7.1	0
+288	367	7.2	0
+288	367	7.3	0
+288	367	7.4	0
+288	367	7.5	0
+288	367	7.6	0
+288	367	7.7	0
+288	367	7.8	0
+288	367	7.9	0
+288	367	8	0
+288	367	8.1	0
+288	367	8.2	0
+288	367	8.3	0
+288	367	8.4	0
+288	367	8.5	0
+288	367	8.6	0
+288	367	8.7	0
+288	367	8.8	0
+288	367	8.9	0
+288	367	9	0
+288	367	9.1	0
+288	367	9.2	0
+288	367	9.3	0
+288	367	9.4	0
+288	367	9.5	0
+288	367	9.6	0
+288	367	9.7	0
+288	367	9.8	0
+288	367	9.9	0
+288	367	10	0
+288	367	10.1	0
+288	367	10.2	0
+288	367	10.3	0
+288	367	10.4	0
+288	367	10.5	0
+288	367	10.6	0
+288	367	10.7	0
+288	367	10.8	0
+288	367	10.9	0
+288	367	11	0
+288	367	11.1	0
+288	367	11.2	0
+288	367	11.3	0
+288	367	11.4	0
+288	367	11.5	0
+288	367	11.6	0
+288	367	11.7	0
+288	367	11.8	0
+288	367	11.9	0
+288	367	12	0
+288	367	12.1	0
+288	367	12.2	0
+288	367	12.3	0
+288	367	12.4	0
+288	367	12.5	0
+288	367	12.6	0
+288	367	12.7	0
+288	367	12.8	0
+288	367	12.9	0
+288	367	13	0
+288	367	13.1	0
+288	367	13.2	0
+288	367	13.3	0
+288	367	13.4	0
+288	367	13.5	0
+288	367	13.6	0
+288	367	13.7	0
+288	367	13.8	0
+288	367	13.9	0
+288	367	14	0
+288	367	14.1	0
+288	367	14.2	0
+288	367	14.3	0
+288	367	14.4	0
+288	367	14.5	0
+288	367	14.6	0
+288	367	14.7	0
+288	367	14.8	0
+288	367	14.9	0
+288	367	15	0
+288	367	15.1	0
+288	367	15.2	0
+288	367	15.3	0
+288	367	15.4	0
+288	367	15.5	0
+288	367	15.6	0
+288	367	15.7	0
+288	367	15.8	0
+288	367	15.9	0
+288	367	16	0
+288	367	16.1	0
+288	367	16.2	0
+288	367	16.3	0
+288	367	16.4	0
+288	367	16.5	0
+288	367	16.6	0
+288	367	16.7	0
+288	367	16.8	0
+288	367	16.9	0
+288	367	17	0
+288	367	17.1	0
+288	367	17.2	0
+288	367	17.3	0
+288	367	17.4	0
+288	367	17.5	0
+288	367	17.6	0
+288	367	17.7	0
+288	367	17.8	0
+288	367	17.9	0
+288	367	18	0
+288	367	18.1	0
+288	367	18.2	0
+288	367	18.3	0
+288	367	18.4	0
+288	367	18.5	0
+288	367	18.6	0
+288	367	18.7	0
+288	367	18.8	0
+288	367	18.9	0
+288	367	19	0
+288	367	19.1	0
+288	367	19.2	0
+288	367	19.3	0
+288	367	19.4	0
+288	367	19.5	0
+288	367	19.6	0
+288	367	19.7	0
+288	367	19.8	0
+288	367	19.9	0
+288	367	20	0
+289	367	20.000152816883	1
+290	367	20.000152816883	1264
+291	367	20.000152816883	7
+292	371	20.000152886931	158
+293	371	20.000152886931	158
+294	371	20.000152886931	158
+295	371	20.000152886931	158
+296	371	20.000152886931	130
+297	374	20.000152886931	108
+297	382	20.000152886931	108
+298	375	20.000152886931	100
+298	383	20.000152886931	100
+299	375	0.2	0
+299	375	0.3	0
+299	375	0.4	0
+299	375	0.5	0
+299	375	0.6	0
+299	375	0.7	0
+299	375	0.8	0
+299	375	0.9	0
+299	375	1	0
+299	375	1.1	0
+299	375	1.2	0
+299	375	1.3	0
+299	375	1.4	0
+299	375	1.5	0
+299	375	1.6	0
+299	375	1.7	0
+299	375	1.8	0
+299	375	1.9	0
+299	375	2	0
+299	375	2.1	0
+299	375	2.2	0
+299	375	2.3	0
+299	375	2.4	0
+299	375	2.5	0
+299	375	2.6	0
+299	375	2.7	0
+299	375	2.8	0
+299	375	2.9	0
+299	375	3	0
+299	375	3.1	0
+299	375	3.2	0
+299	375	3.3	0
+299	375	3.4	0
+299	375	3.5	0
+299	375	3.6	0
+299	375	3.7	0
+299	375	3.8	0
+299	375	3.9	0
+299	375	4	0
+299	375	4.1	0
+299	375	4.2	0
+299	375	4.3	0
+299	375	4.4	0
+299	375	4.5	0
+299	375	4.6	0
+299	375	4.7	0
+299	375	4.8	0
+299	375	4.9	0
+299	375	5	0
+299	375	5.1	0
+299	375	5.2	0
+299	375	5.3	0
+299	375	5.4	0
+299	375	5.5	0
+299	375	5.6	0
+299	375	5.7	0
+299	375	5.8	0
+299	375	5.9	0
+299	375	6	0
+299	375	6.1	0
+299	375	6.2	0
+299	375	6.3	0
+299	375	6.4	0
+299	375	6.5	0
+299	375	6.6	0
+299	375	6.7	0
+299	375	6.8	0
+299	375	6.9	0
+299	375	7	0
+299	375	7.1	0
+299	375	7.2	0
+299	375	7.3	0
+299	375	7.4	0
+299	375	7.5	0
+299	375	7.6	0
+299	375	7.7	0
+299	375	7.8	0
+299	375	7.9	0
+299	375	8	0
+299	375	8.1	0
+299	375	8.2	0
+299	375	8.3	0
+299	375	8.4	0
+299	375	8.5	0
+299	375	8.6	0
+299	375	8.7	0
+299	375	8.8	0
+299	375	8.9	0
+299	375	9	0
+299	375	9.1	0
+299	375	9.2	0
+299	375	9.3	0
+299	375	9.4	0
+299	375	9.5	0
+299	375	9.6	0
+299	375	9.7	0
+299	375	9.8	0
+299	375	9.9	0
+299	375	10	0
+299	375	10.1	0
+299	375	10.2	0
+299	375	10.3	0
+299	375	10.4	0
+299	375	10.5	0
+299	375	10.6	0
+299	375	10.7	0
+299	375	10.8	0
+299	375	10.9	0
+299	375	11	0
+299	375	11.1	0
+299	375	11.2	0
+299	375	11.3	0
+299	375	11.4	0
+299	375	11.5	0
+299	375	11.6	0
+299	375	11.7	0
+299	375	11.8	0
+299	375	11.9	0
+299	375	12	0
+299	375	12.1	0
+299	375	12.2	0
+299	375	12.3	0
+299	375	12.4	0
+299	375	12.5	0
+299	375	12.6	0
+299	375	12.7	0
+299	375	12.8	0
+299	375	12.9	0
+299	375	13	0
+299	375	13.1	0
+299	375	13.2	0
+299	375	13.3	0
+299	375	13.4	0
+299	375	13.5	0
+299	375	13.6	0
+299	375	13.7	0
+299	375	13.8	0
+299	375	13.9	0
+299	375	14	0
+299	375	14.1	0
+299	375	14.2	0
+299	375	14.3	0
+299	375	14.4	0
+299	375	14.5	0
+299	375	14.6	0
+299	375	14.7	0
+299	375	14.8	0
+299	375	14.9	0
+299	375	15	0
+299	375	15.1	0
+299	375	15.2	0
+299	375	15.3	0
+299	375	15.4	0
+299	375	15.5	0
+299	375	15.6	0
+299	375	15.7	0
+299	375	15.8	0
+299	375	15.9	0
+299	375	16	0
+299	375	16.1	0
+299	375	16.2	0
+299	375	16.3	0
+299	375	16.4	0
+299	375	16.5	0
+299	375	16.6	0
+299	375	16.7	0
+299	375	16.8	0
+299	375	16.9	0
+299	375	17	0
+299	375	17.1	0
+299	375	17.2	0
+299	375	17.3	0
+299	375	17.4	0
+299	375	17.5	0
+299	375	17.6	0
+299	375	17.7	0
+299	375	17.8	0
+299	375	17.9	0
+299	375	18	0
+299	375	18.1	0
+299	375	18.2	0
+299	375	18.3	0
+299	375	18.4	0
+299	375	18.5	0
+299	375	18.6	0
+299	375	18.7	0
+299	375	18.8	0
+299	375	18.9	0
+299	375	19	0
+299	375	19.1	0
+299	375	19.2	0
+299	375	19.3	0
+299	375	19.4	0
+299	375	19.5	0
+299	375	19.6	0
+299	375	19.7	0
+299	375	19.8	0
+299	375	19.9	0
+299	375	20	0
+300	375	20.000152886931	0.000152886931
+300	383	20.000152886931	0.000152886931
+301	375	20.000152886931	100
+302	376	20.000152886931	108
+303	378	20.000152886931	128
+304	378	20.000152886931	128
+305	381	20.000152886931	130
+306	381	20.000152886931	1264
+307	381	0.2	0
+307	381	0.3	0
+307	381	0.4	0
+307	381	0.5	0
+307	381	0.6	0
+307	381	0.7	0
+307	381	0.8	0
+307	381	0.9	0
+307	381	1	0
+307	381	1.1	0
+307	381	1.2	0
+307	381	1.3	0
+307	381	1.4	0
+307	381	1.5	0
+307	381	1.6	0
+307	381	1.7	0
+307	381	1.8	0
+307	381	1.9	0
+307	381	2	0
+307	381	2.1	0
+307	381	2.2	0
+307	381	2.3	0
+307	381	2.4	0
+307	381	2.5	0
+307	381	2.6	0
+307	381	2.7	0
+307	381	2.8	0
+307	381	2.9	0
+307	381	3	0
+307	381	3.1	0
+307	381	3.2	0
+307	381	3.3	0
+307	381	3.4	0
+307	381	3.5	0
+307	381	3.6	0
+307	381	3.7	0
+307	381	3.8	0
+307	381	3.9	0
+307	381	4	0
+307	381	4.1	0
+307	381	4.2	0
+307	381	4.3	0
+307	381	4.4	0
+307	381	4.5	0
+307	381	4.6	0
+307	381	4.7	0
+307	381	4.8	0
+307	381	4.9	0
+307	381	5	0
+307	381	5.1	0
+307	381	5.2	0
+307	381	5.3	0
+307	381	5.4	0
+307	381	5.5	0
+307	381	5.6	0
+307	381	5.7	0
+307	381	5.8	0
+307	381	5.9	0
+307	381	6	0
+307	381	6.1	0
+307	381	6.2	0
+307	381	6.3	0
+307	381	6.4	0
+307	381	6.5	0
+307	381	6.6	0
+307	381	6.7	0
+307	381	6.8	0
+307	381	6.9	0
+307	381	7	0
+307	381	7.1	0
+307	381	7.2	0
+307	381	7.3	0
+307	381	7.4	0
+307	381	7.5	0
+307	381	7.6	0
+307	381	7.7	0
+307	381	7.8	0
+307	381	7.9	0
+307	381	8	0
+307	381	8.1	0
+307	381	8.2	0
+307	381	8.3	0
+307	381	8.4	0
+307	381	8.5	0
+307	381	8.6	0
+307	381	8.7	0
+307	381	8.8	0
+307	381	8.9	0
+307	381	9	0
+307	381	9.1	0
+307	381	9.2	0
+307	381	9.3	0
+307	381	9.4	0
+307	381	9.5	0
+307	381	9.6	0
+307	381	9.7	0
+307	381	9.8	0
+307	381	9.9	0
+307	381	10	0
+307	381	10.1	0
+307	381	10.2	0
+307	381	10.3	0
+307	381	10.4	0
+307	381	10.5	0
+307	381	10.6	0
+307	381	10.7	0
+307	381	10.8	0
+307	381	10.9	0
+307	381	11	0
+307	381	11.1	0
+307	381	11.2	0
+307	381	11.3	0
+307	381	11.4	0
+307	381	11.5	0
+307	381	11.6	0
+307	381	11.7	0
+307	381	11.8	0
+307	381	11.9	0
+307	381	12	0
+307	381	12.1	0
+307	381	12.2	0
+307	381	12.3	0
+307	381	12.4	0
+307	381	12.5	0
+307	381	12.6	0
+307	381	12.7	0
+307	381	12.8	0
+307	381	12.9	0
+307	381	13	0
+307	381	13.1	0
+307	381	13.2	0
+307	381	13.3	0
+307	381	13.4	0
+307	381	13.5	0
+307	381	13.6	0
+307	381	13.7	0
+307	381	13.8	0
+307	381	13.9	0
+307	381	14	0
+307	381	14.1	0
+307	381	14.2	0
+307	381	14.3	0
+307	381	14.4	0
+307	381	14.5	0
+307	381	14.6	0
+307	381	14.7	0
+307	381	14.8	0
+307	381	14.9	0
+307	381	15	0
+307	381	15.1	0
+307	381	15.2	0
+307	381	15.3	0
+307	381	15.4	0
+307	381	15.5	0
+307	381	15.6	0
+307	381	15.7	0
+307	381	15.8	0
+307	381	15.9	0
+307	381	16	0
+307	381	16.1	0
+307	381	16.2	0
+307	381	16.3	0
+307	381	16.4	0
+307	381	16.5	0
+307	381	16.6	0
+307	381	16.7	0
+307	381	16.8	0
+307	381	16.9	0
+307	381	17	0
+307	381	17.1	0
+307	381	17.2	0
+307	381	17.3	0
+307	381	17.4	0
+307	381	17.5	0
+307	381	17.6	0
+307	381	17.7	0
+307	381	17.8	0
+307	381	17.9	0
+307	381	18	0
+307	381	18.1	0
+307	381	18.2	0
+307	381	18.3	0
+307	381	18.4	0
+307	381	18.5	0
+307	381	18.6	0
+307	381	18.7	0
+307	381	18.8	0
+307	381	18.9	0
+307	381	19	0
+307	381	19.1	0
+307	381	19.2	0
+307	381	19.3	0
+307	381	19.4	0
+307	381	19.5	0
+307	381	19.6	0
+307	381	19.7	0
+307	381	19.8	0
+307	381	19.9	0
+307	381	20	0
+308	381	20.000152886931	1
+308	385	20.000210886931	0
+309	381	20.000152886931	1264
+309	385	20.000210886931	0
+310	381	20.000152886931	0
+311	385	20.000210886931	5.8e-05
+312	385	20.000210886931	1264
+313	385	0.2	0
+313	385	0.3	0
+313	385	0.4	0
+313	385	0.5	0
+313	385	0.6	0
+313	385	0.7	0
+313	385	0.8	0
+313	385	0.9	0
+313	385	1	0
+313	385	1.1	0
+313	385	1.2	0
+313	385	1.3	0
+313	385	1.4	0
+313	385	1.5	0
+313	385	1.6	0
+313	385	1.7	0
+313	385	1.8	0
+313	385	1.9	0
+313	385	2	0
+313	385	2.1	0
+313	385	2.2	0
+313	385	2.3	0
+313	385	2.4	0
+313	385	2.5	0
+313	385	2.6	0
+313	385	2.7	0
+313	385	2.8	0
+313	385	2.9	0
+313	385	3	0
+313	385	3.1	0
+313	385	3.2	0
+313	385	3.3	0
+313	385	3.4	0
+313	385	3.5	0
+313	385	3.6	0
+313	385	3.7	0
+313	385	3.8	0
+313	385	3.9	0
+313	385	4	0
+313	385	4.1	0
+313	385	4.2	0
+313	385	4.3	0
+313	385	4.4	0
+313	385	4.5	0
+313	385	4.6	0
+313	385	4.7	0
+313	385	4.8	0
+313	385	4.9	0
+313	385	5	0
+313	385	5.1	0
+313	385	5.2	0
+313	385	5.3	0
+313	385	5.4	0
+313	385	5.5	0
+313	385	5.6	0
+313	385	5.7	0
+313	385	5.8	0
+313	385	5.9	0
+313	385	6	0
+313	385	6.1	0
+313	385	6.2	0
+313	385	6.3	0
+313	385	6.4	0
+313	385	6.5	0
+313	385	6.6	0
+313	385	6.7	0
+313	385	6.8	0
+313	385	6.9	0
+313	385	7	0
+313	385	7.1	0
+313	385	7.2	0
+313	385	7.3	0
+313	385	7.4	0
+313	385	7.5	0
+313	385	7.6	0
+313	385	7.7	0
+313	385	7.8	0
+313	385	7.9	0
+313	385	8	0
+313	385	8.1	0
+313	385	8.2	0
+313	385	8.3	0
+313	385	8.4	0
+313	385	8.5	0
+313	385	8.6	0
+313	385	8.7	0
+313	385	8.8	0
+313	385	8.9	0
+313	385	9	0
+313	385	9.1	0
+313	385	9.2	0
+313	385	9.3	0
+313	385	9.4	0
+313	385	9.5	0
+313	385	9.6	0
+313	385	9.7	0
+313	385	9.8	0
+313	385	9.9	0
+313	385	10	0
+313	385	10.1	0
+313	385	10.2	0
+313	385	10.3	0
+313	385	10.4	0
+313	385	10.5	0
+313	385	10.6	0
+313	385	10.7	0
+313	385	10.8	0
+313	385	10.9	0
+313	385	11	0
+313	385	11.1	0
+313	385	11.2	0
+313	385	11.3	0
+313	385	11.4	0
+313	385	11.5	0
+313	385	11.6	0
+313	385	11.7	0
+313	385	11.8	0
+313	385	11.9	0
+313	385	12	0
+313	385	12.1	0
+313	385	12.2	0
+313	385	12.3	0
+313	385	12.4	0
+313	385	12.5	0
+313	385	12.6	0
+313	385	12.7	0
+313	385	12.8	0
+313	385	12.9	0
+313	385	13	0
+313	385	13.1	0
+313	385	13.2	0
+313	385	13.3	0
+313	385	13.4	0
+313	385	13.5	0
+313	385	13.6	0
+313	385	13.7	0
+313	385	13.8	0
+313	385	13.9	0
+313	385	14	0
+313	385	14.1	0
+313	385	14.2	0
+313	385	14.3	0
+313	385	14.4	0
+313	385	14.5	0
+313	385	14.6	0
+313	385	14.7	0
+313	385	14.8	0
+313	385	14.9	0
+313	385	15	0
+313	385	15.1	0
+313	385	15.2	0
+313	385	15.3	0
+313	385	15.4	0
+313	385	15.5	0
+313	385	15.6	0
+313	385	15.7	0
+313	385	15.8	0
+313	385	15.9	0
+313	385	16	0
+313	385	16.1	0
+313	385	16.2	0
+313	385	16.3	0
+313	385	16.4	0
+313	385	16.5	0
+313	385	16.6	0
+313	385	16.7	0
+313	385	16.8	0
+313	385	16.9	0
+313	385	17	0
+313	385	17.1	0
+313	385	17.2	0
+313	385	17.3	0
+313	385	17.4	0
+313	385	17.5	0
+313	385	17.6	0
+313	385	17.7	0
+313	385	17.8	0
+313	385	17.9	0
+313	385	18	0
+313	385	18.1	0
+313	385	18.2	0
+313	385	18.3	0
+313	385	18.4	0
+313	385	18.5	0
+313	385	18.6	0
+313	385	18.7	0
+313	385	18.8	0
+313	385	18.9	0
+313	385	19	0
+313	385	19.1	0
+313	385	19.2	0
+313	385	19.3	0
+313	385	19.4	0
+313	385	19.5	0
+313	385	19.6	0
+313	385	19.7	0
+313	385	19.8	0
+313	385	19.9	0
+313	385	20	0
+314	385	20.000210886931	12000000
+315	385	20.000210886931	158
+316	386	20.000210886931	1
+316	387	20.000210886931	2
+316	435	20.000362886931	1
+316	436	20.000362886931	0
+317	402	20.000249106477	9.7e-05
+318	402	20.000249106477	1264
+319	402	3.2	0
+319	402	3.3	0
+319	402	3.4	0
+319	402	3.5	0
+319	402	3.6	0
+319	402	3.7	0
+319	402	3.8	0
+319	402	3.9	0
+319	402	4	0
+319	402	4.1	0
+319	402	4.2	0
+319	402	4.3	0
+319	402	4.4	0
+319	402	4.5	0
+319	402	4.6	0
+319	402	4.7	0
+319	402	4.8	0
+319	402	4.9	0
+319	402	5	0
+319	402	5.1	0
+319	402	5.2	0
+319	402	5.3	0
+319	402	5.4	0
+319	402	5.5	0
+319	402	5.6	0
+319	402	5.7	0
+319	402	5.8	0
+319	402	5.9	0
+319	402	6	0
+319	402	6.1	0
+319	402	6.2	0
+319	402	6.3	0
+319	402	6.4	0
+319	402	6.5	0
+319	402	6.6	0
+319	402	6.7	0
+319	402	6.8	0
+319	402	6.9	0
+319	402	7	0
+319	402	7.1	0
+319	402	7.2	0
+319	402	7.3	0
+319	402	7.4	0
+319	402	7.5	0
+319	402	7.6	0
+319	402	7.7	0
+319	402	7.8	0
+319	402	7.9	0
+319	402	8	0
+319	402	8.1	0
+319	402	8.2	0
+319	402	8.3	0
+319	402	8.4	0
+319	402	8.5	0
+319	402	8.6	0
+319	402	8.7	0
+319	402	8.8	0
+319	402	8.9	0
+319	402	9	0
+319	402	9.1	0
+319	402	9.2	0
+319	402	9.3	0
+319	402	9.4	0
+319	402	9.5	0
+319	402	9.6	0
+319	402	9.7	0
+319	402	9.8	0
+319	402	9.9	0
+319	402	10	0
+319	402	10.1	0
+319	402	10.2	0
+319	402	10.3	0
+319	402	10.4	0
+319	402	10.5	0
+319	402	10.6	0
+319	402	10.7	0
+319	402	10.8	0
+319	402	10.9	0
+319	402	11	0
+319	402	11.1	0
+319	402	11.2	0
+319	402	11.3	0
+319	402	11.4	0
+319	402	11.5	0
+319	402	11.6	0
+319	402	11.7	0
+319	402	11.8	0
+319	402	11.9	0
+319	402	12	0
+319	402	12.1	0
+319	402	12.2	0
+319	402	12.3	0
+319	402	12.4	0
+319	402	12.5	0
+319	402	12.6	0
+319	402	12.7	0
+319	402	12.8	0
+319	402	12.9	0
+319	402	13	0
+319	402	13.1	0
+319	402	13.2	0
+319	402	13.3	0
+319	402	13.4	0
+319	402	13.5	0
+319	402	13.6	0
+319	402	13.7	0
+319	402	13.8	0
+319	402	13.9	0
+319	402	14	0
+319	402	14.1	0
+319	402	14.2	0
+319	402	14.3	0
+319	402	14.4	0
+319	402	14.5	0
+319	402	14.6	0
+319	402	14.7	0
+319	402	14.8	0
+319	402	14.9	0
+319	402	15	0
+319	402	15.1	0
+319	402	15.2	0
+319	402	15.3	0
+319	402	15.4	0
+319	402	15.5	0
+319	402	15.6	0
+319	402	15.7	0
+319	402	15.8	0
+319	402	15.9	0
+319	402	16	0
+319	402	16.1	0
+319	402	16.2	0
+319	402	16.3	0
+319	402	16.4	0
+319	402	16.5	0
+319	402	16.6	0
+319	402	16.7	0
+319	402	16.8	0
+319	402	16.9	0
+319	402	17	0
+319	402	17.1	0
+319	402	17.2	0
+319	402	17.3	0
+319	402	17.4	0
+319	402	17.5	0
+319	402	17.6	0
+319	402	17.7	0
+319	402	17.8	0
+319	402	17.9	0
+319	402	18	0
+319	402	18.1	0
+319	402	18.2	0
+319	402	18.3	0
+319	402	18.4	0
+319	402	18.5	0
+319	402	18.6	0
+319	402	18.7	0
+319	402	18.8	0
+319	402	18.9	0
+319	402	19	0
+319	402	19.1	0
+319	402	19.2	0
+319	402	19.3	0
+319	402	19.4	0
+319	402	19.5	0
+319	402	19.6	0
+319	402	19.7	0
+319	402	19.8	0
+319	402	19.9	0
+319	402	20	0
+320	402	20.000249106477	12000000
+321	402	20.000249106477	158
+322	403	20.000249106477	1
+322	404	20.000249106477	2
+323	408	20.000249321838	9.7e-05
+324	408	20.000249321838	1264
+325	408	9.2	0
+325	408	9.3	0
+325	408	9.4	0
+325	408	9.5	0
+325	408	9.6	0
+325	408	9.7	0
+325	408	9.8	0
+325	408	9.9	0
+325	408	10	0
+325	408	10.1	0
+325	408	10.2	0
+325	408	10.3	0
+325	408	10.4	0
+325	408	10.5	0
+325	408	10.6	0
+325	408	10.7	0
+325	408	10.8	0
+325	408	10.9	0
+325	408	11	0
+325	408	11.1	0
+325	408	11.2	0
+325	408	11.3	0
+325	408	11.4	0
+325	408	11.5	0
+325	408	11.6	0
+325	408	11.7	0
+325	408	11.8	0
+325	408	11.9	0
+325	408	12	0
+325	408	12.1	0
+325	408	12.2	0
+325	408	12.3	0
+325	408	12.4	0
+325	408	12.5	0
+325	408	12.6	0
+325	408	12.7	0
+325	408	12.8	0
+325	408	12.9	0
+325	408	13	0
+325	408	13.1	0
+325	408	13.2	0
+325	408	13.3	0
+325	408	13.4	0
+325	408	13.5	0
+325	408	13.6	0
+325	408	13.7	0
+325	408	13.8	0
+325	408	13.9	0
+325	408	14	0
+325	408	14.1	0
+325	408	14.2	0
+325	408	14.3	0
+325	408	14.4	0
+325	408	14.5	0
+325	408	14.6	0
+325	408	14.7	0
+325	408	14.8	0
+325	408	14.9	0
+325	408	15	0
+325	408	15.1	0
+325	408	15.2	0
+325	408	15.3	0
+325	408	15.4	0
+325	408	15.5	0
+325	408	15.6	0
+325	408	15.7	0
+325	408	15.8	0
+325	408	15.9	0
+325	408	16	0
+325	408	16.1	0
+325	408	16.2	0
+325	408	16.3	0
+325	408	16.4	0
+325	408	16.5	0
+325	408	16.6	0
+325	408	16.7	0
+325	408	16.8	0
+325	408	16.9	0
+325	408	17	0
+325	408	17.1	0
+325	408	17.2	0
+325	408	17.3	0
+325	408	17.4	0
+325	408	17.5	0
+325	408	17.6	0
+325	408	17.7	0
+325	408	17.8	0
+325	408	17.9	0
+325	408	18	0
+325	408	18.1	0
+325	408	18.2	0
+325	408	18.3	0
+325	408	18.4	0
+325	408	18.5	0
+325	408	18.6	0
+325	408	18.7	0
+325	408	18.8	0
+325	408	18.9	0
+325	408	19	0
+325	408	19.1	0
+325	408	19.2	0
+325	408	19.3	0
+325	408	19.4	0
+325	408	19.5	0
+325	408	19.6	0
+325	408	19.7	0
+325	408	19.8	0
+325	408	19.9	0
+325	408	20	0
+326	408	20.000249321838	12000000
+327	408	20.000249321838	158
+328	409	20.000249321838	1
+328	410	20.000249321838	2
+329	435	20.000362886931	158
+330	435	20.000362886931	158
+331	435	20.000362886931	158
+332	435	20.000362886931	0.000152
+

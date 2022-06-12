@@ -1,0 +1,96 @@
+file 8850 1653100579                                            
+version 3
+run Default-0-20220521-09:34:42-2594
+attr configname Default
+attr datetime 20220521-09:34:42
+attr datetimef 20220521-093442
+attr experiment Default
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network myTestNetwork
+attr processid 2594
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../../Documents/inet/images:../../../../../Documents/veins/images
+config cmdenv-express-mode true
+config cmdenv-autoflush true
+config cmdenv-status-frequency 1s
+config **.cmdenv-log-level info
+config ned-path .
+config image-path ../../images
+config network myTestNetwork
+config debug-on-errors true
+config print-undisposed true
+config sim-time-limit 200s
+config **.scalar-recording true
+config **.vector-recording true
+config *.playgroundSizeX 5000m
+config *.playgroundSizeY 5000m
+config *.playgroundSizeZ 50m
+config *.annotations.draw true
+config *.manager.updateInterval 1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"square.launchd.xml\")"
+config *.rsu[0].mobility.x 100
+config *.rsu[0].mobility.y 100
+config *.rsu[0].mobility.z 3
+config *.rsu[*].applType "\"RSUControlApp\""
+config *.rsu[*].appl.headerLength "80 bit"
+config *.rsu[*].appl.sendBeacons false
+config *.rsu[*].appl.dataOnSch false
+config *.rsu[*].nic.phy80211p.antennaOffsetZ "0 m"
+config *.connectionManager.sendDirect true
+config *.connectionManager.maxInterfDist 2600m
+config *.connectionManager.drawMaxIntfDist false
+config *.**.nic.mac1609_4.useServiceChannel true
+config *.**.nic.mac1609_4.txPower 20mW
+config *.**.nic.mac1609_4.bitrate 6Mbps
+config *.**.nic.phy80211p.minPowerLevel -110dBm
+config *.**.nic.phy80211p.useNoiseFloor true
+config *.**.nic.phy80211p.noiseFloor -98dBm
+config *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.usePropagationDelay true
+config *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+config *.node[*].nic.phy80211p.antennaOffsetY "0 m"
+config *.node[*].nic.phy80211p.antennaOffsetZ "1.895 m"
+config *.node[*].applType "\"VehicleControlApp\""
+config *.node[*].appl.headerLength "80 bit"
+config *.node[*].appl.sendBeacons false
+config *.node[*].appl.dataOnSch true
+config *.node[*].appl.beaconInterval 1s
+config *.node[*].veinsmobility.x 0
+config *.node[*].veinsmobility.y 0
+config *.node[*].veinsmobility.z 0
+config *.node[*].veinsmobility.setHostSpeed false
+config *.node[*0].veinsmobility.accidentCount 0
+
+vector 0 myTestNetwork.node[0].veinsmobility posx ETV
+vector 1 myTestNetwork.node[0].veinsmobility posy ETV
+vector 2 myTestNetwork.node[0].veinsmobility speed ETV
+vector 3 myTestNetwork.node[0].veinsmobility acceleration ETV
+vector 4 myTestNetwork.node[0].veinsmobility co2emission ETV
+vector 5 myTestNetwork.node[1].veinsmobility posx ETV
+vector 6 myTestNetwork.node[1].veinsmobility posy ETV
+vector 7 myTestNetwork.node[1].veinsmobility speed ETV
+vector 8 myTestNetwork.node[1].veinsmobility acceleration ETV
+vector 9 myTestNetwork.node[1].veinsmobility co2emission ETV
+4	3253 587 102 2967 3 26 24 0.973 10.995609576265 92.176130562823 586.8730101441
+3	3840 383 102 2967 3 26 24 -4.5 2.6 11.827134486447 78.944794596045
+2	4223 630 61 2967 2 26 25 2.478959230124 14.306093716571 274.80046620622 3406.4804540966
+1	4853 543 21 2967 1 26 26 26.6 213.01046620622 2015.0670194056 257772.12349416
+0	5396 501 21 2967 1 26 26 33.3 123.4 2612.4699790447 290999.40434399
+9	5897 569 265 3355 6 30 25 0.973 9.5079950646653 92.065952643187 490.26214284517
+8	6466 629 265 3355 6 30 25 -2.8781867181707 2.546569801704 12.13157024577 62.15350068834
+7	7095 662 203 3355 5 30 26 1.9709820190212 14.102552264791 270.51151309504 3144.810534595
+6	7757 567 143 3355 4 30 27 26.6 208.72151309504 2047.7004812666 253874.92335755
+5	8324 525 143 3355 4 30 27 33.3 123.4 2742.0052333876 306861.62821655
+

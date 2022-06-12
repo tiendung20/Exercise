@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Thứ bảy, 11 Tháng 6 Năm 2022 10:59:01 +07 by Eclipse SUMO 
+	netedit Version 1.4.0 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd"> 
+	<input> <sumo-net-file value="/home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3/vd012.net.xml"/> 
+	</input> <output> <output-file value="/home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3/vd012.net.xml"/> 
+	</output> <processing> <geometry.min-radius.fix.railways value="false"/> 
+	<geometry.max-grade.fix value="false"/> <offset.disable-normalization value="true"/> 
+	<lefthand value="false"/> </processing> <junctions> <no-internal-links value="false"/> 
+	<no-turnarounds value="true"/> <junctions.corner-detail value="5"/> <junctions.limit-turn-speed 
+	value="5.5"/> <rectangular-lane-cut value="false"/> </junctions> <pedestrian> 
+	<walkingareas value="false"/> </pedestrian> <netedit> <route-files value="/home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3/vd012.rou.xml"/> 
+	</netedit> <report> <aggregate-warnings value="5"/> </report> </configuration> -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+	<route
+		edges="E0 E1 E2 E3 E4 E5 E6 E7 E23 E24 E25 E26 E27 E28 E29 E30 E31 E32 E33 E34 E35 E36 E37 E38 E39 E40 E41 E42 E43 E44 E45 E46 E47 E48 E49 E50 E51 E52 E53 E54 E55 E56 E57 E58 E59 E60 E61 E62 E63 E64 E65 E66 E67 E68 E69 E70 E71 E76 E77 E78 E79 E80 E81 E82 E83 E84 E85 E86 E90 E91 E92"
+		color="yellow" id="route_0" />
+	<route
+		edges="E4 -E4 -E3 E3 E4 -E4 -E3 E3 E4 -E4 -E3 E3 E4 -E4 -E3 E3 E4 -E4 -E3 E3 E4 -E4"
+		color="yellow" id="route_1" />
+	<person id="person_0"  depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_1"  depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_10" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_11" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_12" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_13" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_14" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_15" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_16" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_17" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_18" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_19" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_2" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_20" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_21" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_22" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_23" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_24" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_25" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_26" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_27" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_28" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_29" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_3" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_4" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_5" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_6" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_7" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_8" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<person id="person_9" depart="0.00">
+		<walk route="route_1" arrivalPos="0.00" />
+	</person>
+	<personFlow begin="0" id="1"  end="4099"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="0" id="2" end="4025"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="0" id="3"  end="3613"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="0" id="4"  end="3676"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<!-- personFlow begin="0" id="5" impatience="0.4" end="3945"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="0" id="6" impatience="0.8" end="3810"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="0" id="7" impatience="0.3" end="3725"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="0" id="8" impatience="0.5" end="4001"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="0" id="9" impatience="0.8" end="4057"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="0" id="10" impatience="1.0" end="3657"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="0" id="11" impatience="0.3" end="3773"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="0" id="12" impatience="0.3" end="3644"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="0" id="13" impatience="0.7" end="4089"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="0" id="14" impatience="0.5" end="4177"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="0" id="15" impatience="0.7" end="4186"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="0" id="16" impatience="0.5" end="4069"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="0" id="17" impatience="0.1" end="4062"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="0" id="18" impatience="0.4" end="3869"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="0" id="19" impatience="0.7" end="3774"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="0" id="20" impatience="0.3" end="4095"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="8" id="21" impatience="0.4" end="4049"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="9" id="22" impatience="0.0" end="3765"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="9" id="23" impatience="0.8" end="4086"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="10" id="24" impatience="0.5" end="3935"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="11" id="25" impatience="0.6" end="4014"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="11" id="26" impatience="0.6" end="3602"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="12" id="27" impatience="0.5" end="4087"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="12" id="28" impatience="0.9" end="3664"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="16" id="29" impatience="0.5" end="3985"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="16" id="30" impatience="0.6" end="4041"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="18" id="31" impatience="0.0" end="3756"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="18" id="32" impatience="0.3" end="4077"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="19" id="33" impatience="0.7" end="4070"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="20" id="34" impatience="0.8" end="3925"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="21" id="35" impatience="0.3" end="4048"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="22" id="36" impatience="0.5" end="4003"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="22" id="37" impatience="0.8" end="3591"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="22" id="38" impatience="0.0" end="4155"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="24" id="39" impatience="0.9" end="4075"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="24" id="40" impatience="0.8" end="3652"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="24" id="41" impatience="0.7" end="4033"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="27" id="42" impatience="0.8" end="3747"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="27" id="43" impatience="0.2" end="4068"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="30" id="44" impatience="0.6" end="3915"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="32" id="45" impatience="0.5" end="3969"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="32" id="46" impatience="0.3" end="4025"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="33" id="47" impatience="0.7" end="3992"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="33" id="48" impatience="0.3" end="3580"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="36" id="49" impatience="0.3" end="4063"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="36" id="50" impatience="1.0" end="3640"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="36" id="51" impatience="0.5" end="3738"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="36" id="52" impatience="0.0" end="4059"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="37" id="53" impatience="0.7" end="3620"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="38" id="54" impatience="1.0" end="4051"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="40" id="55" impatience="0.0" end="3905"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="40" id="56" impatience="0.7" end="4017"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="42" id="57" impatience="0.6" end="4027"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="44" id="58" impatience="0.1" end="3981"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="44" id="59" impatience="0.4" end="3569"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="44" id="60" impatience="0.7" end="4133"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="45" id="61" impatience="0.6" end="3729"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="45" id="62" impatience="0.2" end="4050"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="48" id="63" impatience="0.7" end="4051"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="48" id="64" impatience="0.6" end="3628"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="48" id="65" impatience="0.3" end="3953"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="48" id="66" impatience="0.5" end="4009"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="50" id="67" impatience="0.8" end="3895"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="54" id="68" impatience="0.5" end="3720"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="54" id="69" impatience="0.4" end="4041"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="55" id="70" impatience="0.4" end="3970"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="55" id="71" impatience="0.9" end="3558"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="56" id="72" impatience="0.8" end="4001"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="57" id="73" impatience="1.0" end="4032"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="59" id="74" impatience="0.3" end="3751"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="60" id="75" impatience="0.5" end="4039"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="60" id="76" impatience="0.3" end="3616"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="60" id="77" impatience="0.8" end="3885"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="63" id="78" impatience="0.3" end="4006"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="63" id="79" impatience="0.6" end="3711"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="63" id="80" impatience="0.8" end="4032"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="64" id="81" impatience="0.4" end="3937"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="64" id="82" impatience="0.7" end="3993"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="64" id="83" impatience="0.7" end="3709"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="65" id="84" impatience="0.5" end="3579"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="66" id="85" impatience="0.9" end="3959"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="66" id="86" impatience="0.1" end="3547"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="66" id="87" impatience="1.0" end="4111"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="70" id="88" impatience="1.0" end="3875"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="72" id="89" impatience="0.2" end="4027"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="72" id="90" impatience="0.0" end="3604"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="72" id="91" impatience="0.7" end="3985"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="72" id="92" impatience="0.2" end="3702"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="72" id="93" impatience="0.9" end="4023"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="74" id="94" impatience="0.7" end="3583"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="75" id="95" impatience="0.2" end="4111"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="76" id="96" impatience="1.0" end="4013"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="77" id="97" impatience="1.0" end="3948"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="77" id="98" impatience="0.0" end="3536"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="80" id="99" impatience="1.0" end="3865"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="80" id="100" impatience="0.8" end="3921"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="80" id="101" impatience="0.4" end="3977"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="81" id="102" impatience="0.3" end="3693"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="81" id="103" impatience="0.5" end="4014"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="84" id="104" impatience="0.0" end="4015"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="84" id="105" impatience="0.8" end="3592"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="84" id="106" impatience="0.6" end="3985"
+		period="1">
+		<walk from="-E20" to="-E8" />
+	</personFlow>
+	<personFlow begin="88" id="107" impatience="0.3" end="3937"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow>
+	<personFlow begin="88" id="108" impatience="0.6" end="3525"
+		period="1">
+		<walk from="E173" to="E177" />
+	</personFlow>
+	<personFlow begin="88" id="109" impatience="0.2" end="3969"
+		period="1">
+		<walk from="E23" to="E27" />
+	</personFlow>
+	<personFlow begin="88" id="110" impatience="0.5" end="4089"
+		period="1">
+		<walk from="E28" to="E40" />
+	</personFlow-->
+	<vehicle id="vehicle_0" depart="0.00" route="route_0" />
+</routes>

@@ -1,0 +1,86 @@
+file 249547 1655004972                                          
+version 3
+run General-0-20220612-10:35:53-2649
+attr configname General
+attr datetime 20220612-10:35:53
+attr datetimef 20220612-103553
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network myTestNetwork
+attr processid 2649
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../../Documents/inet/images:../../../../../Documents/veins/images
+config cmdenv-express-mode true
+config cmdenv-autoflush true
+config cmdenv-status-frequency 0.1s
+config **.cmdenv-log-level info
+config ned-path .
+config image-path ../../images
+config network myTestNetwork
+config debug-on-errors true
+config print-undisposed true
+config sim-time-limit 2000s
+config **.scalar-recording true
+config **.vector-recording true
+config *.playgroundSizeX 5000m
+config *.playgroundSizeY 5000m
+config *.playgroundSizeZ 50m
+config *.annotations.draw true
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"square.launchd.xml\")"
+config *.rsu[0].mobility.x 100
+config *.rsu[0].mobility.y 100
+config *.rsu[0].mobility.z 3
+config *.rsu[*].applType "\"RSUControlApp\""
+config *.rsu[*].appl.headerLength "80 bit"
+config *.rsu[*].appl.sendBeacons false
+config *.rsu[*].appl.dataOnSch false
+config *.rsu[*].nic.phy80211p.antennaOffsetZ "0 m"
+config *.connectionManager.sendDirect true
+config *.connectionManager.maxInterfDist 2600m
+config *.connectionManager.drawMaxIntfDist false
+config *.**.nic.mac1609_4.useServiceChannel true
+config *.**.nic.mac1609_4.txPower 20mW
+config *.**.nic.mac1609_4.bitrate 6Mbps
+config *.**.nic.phy80211p.minPowerLevel -110dBm
+config *.**.nic.phy80211p.useNoiseFloor true
+config *.**.nic.phy80211p.noiseFloor -98dBm
+config *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.usePropagationDelay true
+config *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+config *.node[*].nic.phy80211p.antennaOffsetY "0 m"
+config *.node[*].nic.phy80211p.antennaOffsetZ "1.895 m"
+config *.node[*].applType "\"VehicleControlApp\""
+config *.node[*].appl.headerLength "80 bit"
+config *.node[*].appl.sendBeacons false
+config *.node[*].appl.dataOnSch true
+config *.node[*].appl.beaconInterval 0.1s
+config *.node[*].veinsmobility.x 0
+config *.node[*].veinsmobility.y 0
+config *.node[*].veinsmobility.z 0
+config *.node[*].veinsmobility.setHostSpeed false
+config *.node[*0].veinsmobility.accidentCount 0
+
+vector 0 myTestNetwork.node[0].veinsmobility posx ETV
+vector 1 myTestNetwork.node[0].veinsmobility posy ETV
+vector 2 myTestNetwork.node[0].veinsmobility speed ETV
+vector 3 myTestNetwork.node[0].veinsmobility acceleration ETV
+vector 4 myTestNetwork.node[0].veinsmobility co2emission ETV
+4	2974 59031 56 90022 0.3 203 2028 0.973 21.405767148123 2737.1088105161 4359.9366325423
+3	62005 30734 56 90022 0.3 203 2028 0 26 44.652312381963 1023.9087571943
+2	92739 58889 8 90022 0.2 203 2029 0 4.4652312381963 9001.1147887743 40143.562921232
+1	151628 45669 3 90022 0.1 203 2030 164.1 326.6 594550.09178988 179573666.33502
+0	197297 52249 3 90022 0.1 203 2030 30.1 634.01147887745 652724.98171496 302610251.95912
+

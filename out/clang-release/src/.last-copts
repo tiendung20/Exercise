@@ -1,0 +1,1 @@
+-O3 -DNDEBUG=1 -ffp-contract=off   -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_QTENV -DWITH_NETBUILDER -DWITH_OSG -DOMNETPPLIBS_IMPORT -DINET_IMPORT -DVEINS_IMPORT -I/home/dung/Documents/inet/src -I/home/dung/Documents/veins/src -I. -I/home/dung/omnetpp-6.0/include
