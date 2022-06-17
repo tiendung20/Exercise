@@ -74,7 +74,10 @@ private:
     std::vector<Edge*> from, to;
 
 public:
+    int k;
+    double predictW, q, d;
     Vertex() {
+        k = 0;
     }
     void setId(std::string id) {
         this->id = id;

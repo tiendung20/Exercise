@@ -18,6 +18,7 @@
 #include "Graph.h"
 #include <vector>
 #include <string>
+#include <cmath>
 
 #include "veins/modules/application/traci/TraCIDemo11pMessage_m.h"
 
@@ -128,6 +129,20 @@ void RSUControlApp::onWSM(BaseFrame1609_4 *wsm) {
                                 + std::to_string(cur->n->stopTime * 0.1);
                         NodeVertex *nv = graph->searchVertex(
                                 cur->n->beforeLaneId);
+                        if (nv->v->k == 0) {
+                            nv->v->predictW = cur->n->stopTime * 0.1;
+                            nv->v->d = nv->v->q = 0;
+                            nv->v->k++;
+                        } else {
+                            double error = (cur->n->stopTime * 0.1)
+                                    - nv->v->predictW;
+                            nv->v->q = 0.3 * error - 0.7 * nv->v->q;
+                            nv->v->d = 0.3 * abs(error) - 0.7 * nv->v->d;
+                            double a = abs(nv->v->q / nv->v->d);
+                            nv->v->predictW = a * cur->n->stopTime * 0.1
+                                    + (1 - a) * nv->v->predictW;
+                            mes = mes + " " + std::to_string(nv->v->predictW);
+                        }
                         nv->v->setW(cur->n->stopTime * 0.1);
                         message.push_back(mes);
                     } else if (cur->n->laneId.front() == ':') {
@@ -136,6 +151,20 @@ void RSUControlApp::onWSM(BaseFrame1609_4 *wsm) {
                         mes = full_name + " "
                                 + std::to_string(cur->n->stopTime * 0.1);
                         NodeVertex *nv = graph->searchVertex(full_name);
+                        if (nv->v->k == 0) {
+                            nv->v->predictW = cur->n->stopTime * 0.1;
+                            nv->v->d = nv->v->q = 0;
+                            nv->v->k++;
+                        } else {
+                            double error = (cur->n->stopTime * 0.1)
+                                    - nv->v->predictW;
+                            nv->v->q = 0.3 * error - 0.7 * nv->v->q;
+                            nv->v->d = 0.3 * abs(error) - 0.7 * nv->v->d;
+                            double a = abs(nv->v->q / nv->v->d);
+                            nv->v->predictW = a * cur->n->stopTime * 0.1
+                                    + (1 - a) * nv->v->predictW;
+                            mes = mes + " " + std::to_string(nv->v->predictW);
+                        }
                         nv->v->setW(cur->n->stopTime * 0.1);
                         message.push_back(mes);
                     }
