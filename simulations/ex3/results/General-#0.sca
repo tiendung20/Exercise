@@ -1,0 +1,414 @@
+version 3
+run General-0-20220617-22:47:27-7865
+attr configname General
+attr datetime 20220617-22:47:27
+attr datetimef 20220617-224727
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network myTestNetwork
+attr processid 7865
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../../../Documents/inet/images:../../../../../Documents/veins/images
+config cmdenv-express-mode true
+config cmdenv-autoflush true
+config cmdenv-status-frequency 0.1s
+config **.cmdenv-log-level info
+config ned-path .
+config image-path ../../images
+config network myTestNetwork
+config debug-on-errors true
+config print-undisposed true
+config sim-time-limit 2000s
+config **.scalar-recording true
+config **.vector-recording true
+config *.playgroundSizeX 5000m
+config *.playgroundSizeY 5000m
+config *.playgroundSizeZ 50m
+config *.annotations.draw true
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"square.launchd.xml\")"
+config *.rsu[0].mobility.x 100
+config *.rsu[0].mobility.y 100
+config *.rsu[0].mobility.z 3
+config *.rsu[*].applType "\"RSUControlApp\""
+config *.rsu[*].appl.headerLength "80 bit"
+config *.rsu[*].appl.sendBeacons false
+config *.rsu[*].appl.dataOnSch false
+config *.rsu[*].nic.phy80211p.antennaOffsetZ "0 m"
+config *.connectionManager.sendDirect true
+config *.connectionManager.maxInterfDist 2600m
+config *.connectionManager.drawMaxIntfDist false
+config *.**.nic.mac1609_4.useServiceChannel true
+config *.**.nic.mac1609_4.txPower 20mW
+config *.**.nic.mac1609_4.bitrate 6Mbps
+config *.**.nic.phy80211p.minPowerLevel -110dBm
+config *.**.nic.phy80211p.useNoiseFloor true
+config *.**.nic.phy80211p.noiseFloor -98dBm
+config *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+config *.**.nic.phy80211p.usePropagationDelay true
+config *.**.nic.phy80211p.antenna "xmldoc(\"antenna.xml\", \"/root/Antenna[@id='monopole']\")"
+config *.node[*].nic.phy80211p.antennaOffsetY "0 m"
+config *.node[*].nic.phy80211p.antennaOffsetZ "1.895 m"
+config *.node[*].applType "\"VehicleControlApp\""
+config *.node[*].appl.headerLength "80 bit"
+config *.node[*].appl.sendBeacons false
+config *.node[*].appl.dataOnSch true
+config *.node[*].appl.beaconInterval 0.1s
+config *.node[*].veinsmobility.x 0
+config *.node[*].veinsmobility.y 0
+config *.node[*].veinsmobility.z 0
+config *.node[*].veinsmobility.setHostSpeed false
+config *.node[*0].veinsmobility.accidentCount 0
+
+par myTestNetwork.node[0].appl typename "\"vanettutorials.veins.VehicleControlApp\""
+par myTestNetwork.node[0].appl headerLength 80bit
+attr unit bit
+par myTestNetwork.node[0].appl sendBeacons false
+par myTestNetwork.node[0].appl beaconLengthBits 256bit
+attr unit bit
+par myTestNetwork.node[0].appl beaconUserPriority 7
+par myTestNetwork.node[0].appl beaconInterval 0.1s
+attr unit s
+par myTestNetwork.node[0].appl dataLengthBits 1024bit
+attr unit bit
+par myTestNetwork.node[0].appl dataOnSch true
+par myTestNetwork.node[0].appl dataUserPriority 7
+par myTestNetwork.node[0].appl avoidBeaconSynchronization true
+par myTestNetwork.node[0].appl sendWSA false
+par myTestNetwork.node[0].appl wsaLengthBits 250bit
+attr unit bit
+par myTestNetwork.node[0].appl wsaInterval 1s
+attr unit s
+par myTestNetwork.node[0].appl appName "\"My first Veins App!\""
+scalar myTestNetwork.node[0].appl generatedWSMs 0
+scalar myTestNetwork.node[0].appl receivedWSMs 0
+scalar myTestNetwork.node[0].appl generatedBSMs 2190
+scalar myTestNetwork.node[0].appl receivedBSMs 0
+scalar myTestNetwork.node[0].appl generatedWSAs 0
+scalar myTestNetwork.node[0].appl receivedWSAs 0
+par myTestNetwork.node[0].nic.phy80211p typename "\"org.car2x.veins.modules.phy.PhyLayer80211p\""
+par myTestNetwork.node[0].nic.phy80211p recordStats false
+par myTestNetwork.node[0].nic.phy80211p usePropagationDelay true
+par myTestNetwork.node[0].nic.phy80211p noiseFloor -98dBm
+attr unit dBm
+par myTestNetwork.node[0].nic.phy80211p useNoiseFloor true
+par myTestNetwork.node[0].nic.phy80211p antenna "<Antenna type=\"SampledAntenna1D\" id=\"monopole\">...</Antenna> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//antenna.xml:35"
+par myTestNetwork.node[0].nic.phy80211p antennaOffsetX 0m
+attr unit m
+par myTestNetwork.node[0].nic.phy80211p antennaOffsetY 0m
+attr unit m
+par myTestNetwork.node[0].nic.phy80211p antennaOffsetZ 1.895m
+attr unit m
+par myTestNetwork.node[0].nic.phy80211p antennaOffsetYaw 0rad
+attr unit rad
+par myTestNetwork.node[0].nic.phy80211p analogueModels "<root>...</root> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//config.xml:34"
+par myTestNetwork.node[0].nic.phy80211p decider "<root>...</root> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//config.xml:34"
+par myTestNetwork.node[0].nic.phy80211p minPowerLevel -110dBm
+attr unit dBm
+par myTestNetwork.node[0].nic.phy80211p timeRXToTX 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p timeRXToSleep 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p timeTXToRX 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p timeTXToSleep 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p timeSleepToRX 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p timeSleepToTX 0s
+attr unit s
+par myTestNetwork.node[0].nic.phy80211p initialRadioState 0
+par myTestNetwork.node[0].nic.phy80211p radioMinAtt 1
+par myTestNetwork.node[0].nic.phy80211p radioMaxAtt 0
+par myTestNetwork.node[0].nic.phy80211p nbRadioChannels 1
+par myTestNetwork.node[0].nic.phy80211p initialRadioChannel 0
+par myTestNetwork.node[0].nic.phy80211p ccaThreshold -65dBm
+attr unit dBm
+par myTestNetwork.node[0].nic.phy80211p collectCollisionStatistics false
+par myTestNetwork.node[0].nic.phy80211p allowTxDuringRx false
+scalar myTestNetwork.node[0].nic.phy80211p busyTime 0.0022892785388129
+par myTestNetwork.node[0].nic.mac1609_4 typename "\"org.car2x.veins.modules.mac.ieee80211p.Mac1609_4\""
+par myTestNetwork.node[0].nic.mac1609_4 notAffectedByHostState false
+par myTestNetwork.node[0].nic.mac1609_4 headerLength 0bit
+attr unit bit
+par myTestNetwork.node[0].nic.mac1609_4 address "\"auto\""
+par myTestNetwork.node[0].nic.mac1609_4 useServiceChannel true
+par myTestNetwork.node[0].nic.mac1609_4 serviceChannel 1
+par myTestNetwork.node[0].nic.mac1609_4 bitrate 6000000bps
+attr unit bps
+par myTestNetwork.node[0].nic.mac1609_4 syncOffset 0.0003s
+attr unit s
+par myTestNetwork.node[0].nic.mac1609_4 txPower 20mW
+attr unit mW
+par myTestNetwork.node[0].nic.mac1609_4 queueSize 0
+par myTestNetwork.node[0].nic.mac1609_4 dot11RTSThreshold 12000bit
+attr unit bit
+par myTestNetwork.node[0].nic.mac1609_4 dot11ShortRetryLimit 7
+par myTestNetwork.node[0].nic.mac1609_4 dot11LongRetryLimit 4
+par myTestNetwork.node[0].nic.mac1609_4 ackLength 112bit
+attr unit bit
+par myTestNetwork.node[0].nic.mac1609_4 useAcks false
+par myTestNetwork.node[0].nic.mac1609_4 frameErrorRate 0
+par myTestNetwork.node[0].nic.mac1609_4 ackErrorRate 0
+scalar myTestNetwork.node[0].nic.mac1609_4 ReceivedUnicastPackets 0
+scalar myTestNetwork.node[0].nic.mac1609_4 ReceivedBroadcasts 2140
+scalar myTestNetwork.node[0].nic.mac1609_4 SentPackets 4378
+scalar myTestNetwork.node[0].nic.mac1609_4 SentAcknowledgements 0
+scalar myTestNetwork.node[0].nic.mac1609_4 RetriesExceeded 0
+scalar myTestNetwork.node[0].nic.mac1609_4 SNIRLostPackets 21
+scalar myTestNetwork.node[0].nic.mac1609_4 RXTXLostPackets 0
+scalar myTestNetwork.node[0].nic.mac1609_4 TotalLostPackets 21
+scalar myTestNetwork.node[0].nic.mac1609_4 DroppedPacketsInMac 0
+scalar myTestNetwork.node[0].nic.mac1609_4 TooLittleTime 0
+scalar myTestNetwork.node[0].nic.mac1609_4 TimesIntoBackoff 6567
+scalar myTestNetwork.node[0].nic.mac1609_4 SlotsBackoff 6543
+scalar myTestNetwork.node[0].nic.mac1609_4 NumInternalContention 0
+scalar myTestNetwork.node[0].nic.mac1609_4 totalBusyTime 1.241234
+scalar myTestNetwork.node[0].nic.mac1609_4 retriesExceeded:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigRetriesExceeded
+scalar myTestNetwork.node[0].nic.mac1609_4 sentAcks:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigSentAck
+scalar myTestNetwork.node[0].nic.mac1609_4 sentPackets:count 4378
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigSentPacket
+scalar myTestNetwork.node[0].nic.mac1609_4 collisions:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigCollision
+scalar myTestNetwork.node[0].nic.mac1609_4 channelBusy:timeavg 0.0056677351598176
+attr recordingmode timeavg
+attr source org_car2x_veins_modules_mac_sigChannelBusy
+par myTestNetwork.node[0].nic typename "\"org.car2x.veins.modules.nic.Nic80211p\""
+par myTestNetwork.node[0].nic connectionManagerName "\"connectionManager\""
+par myTestNetwork.node[0].veinsmobility typename "\"org.car2x.veins.modules.mobility.traci.TraCIMobility\""
+par myTestNetwork.node[0].veinsmobility notAffectedByHostState true
+par myTestNetwork.node[0].veinsmobility x 0
+par myTestNetwork.node[0].veinsmobility y 0
+par myTestNetwork.node[0].veinsmobility z 0
+par myTestNetwork.node[0].veinsmobility xOrientation 1
+par myTestNetwork.node[0].veinsmobility yOrientation 0
+par myTestNetwork.node[0].veinsmobility zOrientation 0
+par myTestNetwork.node[0].veinsmobility hostPositionOffset 0m
+attr unit m
+par myTestNetwork.node[0].veinsmobility setHostSpeed false
+par myTestNetwork.node[0].veinsmobility accidentCount 0
+par myTestNetwork.node[0].veinsmobility accidentStart 46.3465s
+attr unit s
+par myTestNetwork.node[0].veinsmobility accidentDuration "uniform(30s, 60s)"
+attr unit s
+par myTestNetwork.node[0].veinsmobility accidentInterval "uniform(30s, 60s)"
+attr unit s
+scalar myTestNetwork.node[0].veinsmobility startTime 0.1
+scalar myTestNetwork.node[0].veinsmobility totalTime 218.9
+scalar myTestNetwork.node[0].veinsmobility stopTime 219.1
+scalar myTestNetwork.node[0].veinsmobility minSpeed 0
+scalar myTestNetwork.node[0].veinsmobility maxSpeed 4.0172813111195
+scalar myTestNetwork.node[0].veinsmobility totalDistance 867.95164490648
+scalar myTestNetwork.node[0].veinsmobility totalCO2Emission 289.23964989472
+par myTestNetwork.node[0] typename "\"org.car2x.veins.nodes.Car\""
+par myTestNetwork.node[0] applType "\"VehicleControlApp\""
+par myTestNetwork.node[0] nicType "\"Nic80211p\""
+par myTestNetwork.node[0] veinsmobilityType "\"org.car2x.veins.modules.mobility.traci.TraCIMobility\""
+par myTestNetwork.obstacles typename "\"org.car2x.veins.modules.obstacle.ObstacleControl\""
+par myTestNetwork.obstacles obstacles "<obstacles/> at content:1"
+par myTestNetwork.obstacles gridCellSize 250
+par myTestNetwork.annotations typename "\"org.car2x.veins.modules.world.annotations.AnnotationManager\""
+par myTestNetwork.annotations draw true
+par myTestNetwork.annotations annotations "<annotations/> at content:1"
+par myTestNetwork.connectionManager typename "\"org.car2x.veins.base.connectionManager.ConnectionManager\""
+par myTestNetwork.connectionManager sendDirect true
+par myTestNetwork.connectionManager maxInterfDist 2600m
+attr unit m
+par myTestNetwork.connectionManager drawMaxIntfDist false
+par myTestNetwork.world typename "\"org.car2x.veins.base.modules.BaseWorldUtility\""
+par myTestNetwork.world playgroundSizeX 5000m
+attr unit m
+par myTestNetwork.world playgroundSizeY 5000m
+attr unit m
+par myTestNetwork.world playgroundSizeZ 50m
+attr unit m
+par myTestNetwork.world useTorus false
+par myTestNetwork.world use2D false
+par myTestNetwork.manager typename "\"org.car2x.veins.modules.mobility.traci.TraCIScenarioManagerLaunchd\""
+par myTestNetwork.manager connectAt 0s
+attr unit s
+par myTestNetwork.manager firstStepAt -1s
+attr unit s
+par myTestNetwork.manager updateInterval 0.1s
+attr unit s
+par myTestNetwork.manager moduleType "\"org.car2x.veins.nodes.Car\""
+par myTestNetwork.manager moduleName "\"node\""
+par myTestNetwork.manager moduleDisplayString "\"*='i=veins/node/car;is=vs'\""
+par myTestNetwork.manager trafficLightModuleType "\"\""
+par myTestNetwork.manager trafficLightModuleName "\"tls\""
+par myTestNetwork.manager trafficLightFilter "\"\""
+par myTestNetwork.manager trafficLightModuleDisplayString "\"i=misc/node2;is=vs;r=0,,#707070,1\""
+par myTestNetwork.manager host "\"localhost\""
+par myTestNetwork.manager port 9999
+par myTestNetwork.manager seed -1
+par myTestNetwork.manager autoShutdown true
+par myTestNetwork.manager margin 25
+par myTestNetwork.manager roiRoads "\"\""
+par myTestNetwork.manager roiRects "\"\""
+par myTestNetwork.manager penetrationRate 1
+par myTestNetwork.manager ignoreGuiCommands false
+par myTestNetwork.manager launchConfig "<launch>...</launch> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//square.launchd.xml:34"
+scalar myTestNetwork.manager roiArea 0
+par myTestNetwork.roadsCanvasVisualizer typename "\"org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer\""
+par myTestNetwork.roadsCanvasVisualizer enabled true
+par myTestNetwork.roadsCanvasVisualizer lineZIndex -1
+par myTestNetwork.roadsCanvasVisualizer lineColor "\"firebrick4\""
+par myTestNetwork.roadsCanvasVisualizer lineWidth 1
+par myTestNetwork.roadsCanvasVisualizer lineWidthZoom false
+par myTestNetwork.rsu[0].appl typename "\"vanettutorials.veins.RSUControlApp\""
+par myTestNetwork.rsu[0].appl headerLength 80bit
+attr unit bit
+par myTestNetwork.rsu[0].appl sendBeacons false
+par myTestNetwork.rsu[0].appl beaconLengthBits 256bit
+attr unit bit
+par myTestNetwork.rsu[0].appl beaconUserPriority 7
+par myTestNetwork.rsu[0].appl beaconInterval 1s
+attr unit s
+par myTestNetwork.rsu[0].appl dataLengthBits 1024bit
+attr unit bit
+par myTestNetwork.rsu[0].appl dataOnSch false
+par myTestNetwork.rsu[0].appl dataUserPriority 7
+par myTestNetwork.rsu[0].appl avoidBeaconSynchronization true
+par myTestNetwork.rsu[0].appl sendWSA false
+par myTestNetwork.rsu[0].appl wsaLengthBits 250bit
+attr unit bit
+par myTestNetwork.rsu[0].appl wsaInterval 1s
+attr unit s
+scalar myTestNetwork.rsu[0].appl generatedWSMs 0
+scalar myTestNetwork.rsu[0].appl receivedWSMs 2161
+scalar myTestNetwork.rsu[0].appl generatedBSMs 0
+scalar myTestNetwork.rsu[0].appl receivedBSMs 2180
+scalar myTestNetwork.rsu[0].appl generatedWSAs 0
+scalar myTestNetwork.rsu[0].appl receivedWSAs 0
+par myTestNetwork.rsu[0].nic.phy80211p typename "\"org.car2x.veins.modules.phy.PhyLayer80211p\""
+par myTestNetwork.rsu[0].nic.phy80211p recordStats false
+par myTestNetwork.rsu[0].nic.phy80211p usePropagationDelay true
+par myTestNetwork.rsu[0].nic.phy80211p noiseFloor -98dBm
+attr unit dBm
+par myTestNetwork.rsu[0].nic.phy80211p useNoiseFloor true
+par myTestNetwork.rsu[0].nic.phy80211p antenna "<Antenna type=\"SampledAntenna1D\" id=\"monopole\">...</Antenna> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//antenna.xml:35"
+par myTestNetwork.rsu[0].nic.phy80211p antennaOffsetX 0m
+attr unit m
+par myTestNetwork.rsu[0].nic.phy80211p antennaOffsetY 0m
+attr unit m
+par myTestNetwork.rsu[0].nic.phy80211p antennaOffsetZ 0m
+attr unit m
+par myTestNetwork.rsu[0].nic.phy80211p antennaOffsetYaw 0rad
+attr unit rad
+par myTestNetwork.rsu[0].nic.phy80211p analogueModels "<root>...</root> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//config.xml:34"
+par myTestNetwork.rsu[0].nic.phy80211p decider "<root>...</root> at /home/dung/omnetpp-6.0/workspace/VANETTutorials/simulations/ex3//config.xml:34"
+par myTestNetwork.rsu[0].nic.phy80211p minPowerLevel -110dBm
+attr unit dBm
+par myTestNetwork.rsu[0].nic.phy80211p timeRXToTX 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p timeRXToSleep 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p timeTXToRX 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p timeTXToSleep 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p timeSleepToRX 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p timeSleepToTX 0s
+attr unit s
+par myTestNetwork.rsu[0].nic.phy80211p initialRadioState 0
+par myTestNetwork.rsu[0].nic.phy80211p radioMinAtt 1
+par myTestNetwork.rsu[0].nic.phy80211p radioMaxAtt 0
+par myTestNetwork.rsu[0].nic.phy80211p nbRadioChannels 1
+par myTestNetwork.rsu[0].nic.phy80211p initialRadioChannel 0
+par myTestNetwork.rsu[0].nic.phy80211p ccaThreshold -65dBm
+attr unit dBm
+par myTestNetwork.rsu[0].nic.phy80211p collectCollisionStatistics false
+par myTestNetwork.rsu[0].nic.phy80211p allowTxDuringRx false
+scalar myTestNetwork.rsu[0].nic.phy80211p busyTime 0.000367752
+par myTestNetwork.rsu[0].nic.mac1609_4 typename "\"org.car2x.veins.modules.mac.ieee80211p.Mac1609_4\""
+par myTestNetwork.rsu[0].nic.mac1609_4 notAffectedByHostState false
+par myTestNetwork.rsu[0].nic.mac1609_4 headerLength 0bit
+attr unit bit
+par myTestNetwork.rsu[0].nic.mac1609_4 address "\"auto\""
+par myTestNetwork.rsu[0].nic.mac1609_4 useServiceChannel true
+par myTestNetwork.rsu[0].nic.mac1609_4 serviceChannel 1
+par myTestNetwork.rsu[0].nic.mac1609_4 bitrate 6000000bps
+attr unit bps
+par myTestNetwork.rsu[0].nic.mac1609_4 syncOffset 0.0003s
+attr unit s
+par myTestNetwork.rsu[0].nic.mac1609_4 txPower 20mW
+attr unit mW
+par myTestNetwork.rsu[0].nic.mac1609_4 queueSize 0
+par myTestNetwork.rsu[0].nic.mac1609_4 dot11RTSThreshold 12000bit
+attr unit bit
+par myTestNetwork.rsu[0].nic.mac1609_4 dot11ShortRetryLimit 7
+par myTestNetwork.rsu[0].nic.mac1609_4 dot11LongRetryLimit 4
+par myTestNetwork.rsu[0].nic.mac1609_4 ackLength 112bit
+attr unit bit
+par myTestNetwork.rsu[0].nic.mac1609_4 useAcks false
+par myTestNetwork.rsu[0].nic.mac1609_4 frameErrorRate 0
+par myTestNetwork.rsu[0].nic.mac1609_4 ackErrorRate 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 ReceivedUnicastPackets 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 ReceivedBroadcasts 4341
+scalar myTestNetwork.rsu[0].nic.mac1609_4 SentPackets 2161
+scalar myTestNetwork.rsu[0].nic.mac1609_4 SentAcknowledgements 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 RetriesExceeded 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 SNIRLostPackets 37
+scalar myTestNetwork.rsu[0].nic.mac1609_4 RXTXLostPackets 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 TotalLostPackets 37
+scalar myTestNetwork.rsu[0].nic.mac1609_4 DroppedPacketsInMac 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 TooLittleTime 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 TimesIntoBackoff 4322
+scalar myTestNetwork.rsu[0].nic.mac1609_4 SlotsBackoff 3230
+scalar myTestNetwork.rsu[0].nic.mac1609_4 NumInternalContention 0
+scalar myTestNetwork.rsu[0].nic.mac1609_4 totalBusyTime 1.579584481337
+scalar myTestNetwork.rsu[0].nic.mac1609_4 retriesExceeded:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigRetriesExceeded
+scalar myTestNetwork.rsu[0].nic.mac1609_4 sentAcks:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigSentAck
+scalar myTestNetwork.rsu[0].nic.mac1609_4 sentPackets:count 2161
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigSentPacket
+scalar myTestNetwork.rsu[0].nic.mac1609_4 collisions:count 0
+attr recordingmode count
+attr source org_car2x_veins_modules_mac_sigCollision
+scalar myTestNetwork.rsu[0].nic.mac1609_4 channelBusy:timeavg 0.00053586824066851
+attr recordingmode timeavg
+attr source org_car2x_veins_modules_mac_sigChannelBusy
+par myTestNetwork.rsu[0].nic typename "\"org.car2x.veins.modules.nic.Nic80211p\""
+par myTestNetwork.rsu[0].nic connectionManagerName "\"connectionManager\""
+par myTestNetwork.rsu[0].mobility typename "\"org.car2x.veins.base.modules.BaseMobility\""
+par myTestNetwork.rsu[0].mobility notAffectedByHostState true
+par myTestNetwork.rsu[0].mobility x 100
+par myTestNetwork.rsu[0].mobility y 100
+par myTestNetwork.rsu[0].mobility z 3
+par myTestNetwork.rsu[0].mobility xOrientation 1
+par myTestNetwork.rsu[0].mobility yOrientation 0
+par myTestNetwork.rsu[0].mobility zOrientation 0
+par myTestNetwork.rsu[0] typename "\"org.car2x.veins.nodes.RSU\""
+par myTestNetwork.rsu[0] applType "\"RSUControlApp\""
+par myTestNetwork.rsu[0] nicType "\"Nic80211p\""
+par myTestNetwork typename "\"vanettutorials.simulations.ex3.myTestNetwork\""
+par myTestNetwork playgroundSizeX 5000m
+attr unit m
+par myTestNetwork playgroundSizeY 5000m
+attr unit m
+par myTestNetwork playgroundSizeZ 50m
+attr unit m
+

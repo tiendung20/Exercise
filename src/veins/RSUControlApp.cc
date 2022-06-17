@@ -28,21 +28,23 @@ Register_Class(RSUControlApp);
 void printVertex(NodeVertex *root) {
     if (root != NULL) {
         printVertex(root->left);
-        EV << root->v->getId() << endl;
-        for (auto r : root->v->getFrom()) {
-            EV << r->getId() << " - " << r->getW() << " ";
-        }
-        EV << endl;
-        for (auto r : root->v->getTo()) {
-            EV << r->getId() << " - " << r->getW() << " ";
-        }
-        EV << endl;
-        if (root->j_of_vertex.size() > 2) {
-            for (auto r : root->v->getInternals()) {
-                if (r->getFrom().length() > 0 && r->getTo().length() > 0)
-                    EV << r->getFrom() << " + " << r->getTo() << " + "
-                              << r->getW() << endl;
-            }
+        if (root->j_of_vertex.size() == 0) {
+            EV << root->v->getId() << endl;
+//            for (auto r : root->v->getFrom()) {
+//                EV << r->getId() << " ";
+//            }
+//            EV << endl;
+//            for (auto r : root->v->getTo()) {
+//                EV << r->getId() << " ";
+//            }
+//            EV << endl;
+//        if (root->j_of_vertex.size() > 2) {
+//            for (auto r : root->v->getInternals()) {
+//                if (r->getFrom().length() > 0 && r->getTo().length() > 0)
+//                    EV << r->getFrom() << " + " << r->getTo() << " + "
+//                              << r->getW() << endl;
+//            }
+//        }
         }
         printVertex(root->right);
     }
@@ -53,10 +55,6 @@ void RSUControlApp::initialize(int stage) {
     if (stage == 0) {
         sendBeacon = new cMessage("send Beacon");
         graph = new Graph();
-        count = new Count();
-        count->k = 0;
-        count->i = 0;
-        count->laneId = "";
 //        printVertex(graph->getVertex());
     } else if (stage == 1) {
         // Initializing members that require initialized other modules goes here
@@ -102,123 +100,56 @@ void RSUControlApp::onWSM(BaseFrame1609_4 *wsm) {
             send(WSM, lowerLayerOut);
         }
         std::stringstream streamData(bc->getDemoData());
-        std::string str, before_name;
-//        AGV *cur = NULL;
-//        for (auto a : vh) {
-//            if (a->id == std::to_string(bc->getSenderAddress()))
-//                cur = a;
-//        }
-//        if (cur == NULL) {
-//            cur = new AGV();
-//            cur->id = std::to_string(bc->getSenderAddress());
-//            cur->n = new Count();
-//            vh.push_back(cur);
-//        }
-        before_name = count->laneId;
+        std::string str;
+        AGV *cur = NULL;
+        for (auto a : vh) {
+            if (a->id.compare(std::to_string(bc->getSenderAddress())) == 0)
+                cur = a;
+        }
+        if (cur == NULL) {
+            cur = new AGV();
+            cur->id = std::to_string(bc->getSenderAddress());
+            cur->n = new Count();
+            cur->n->stopTime = 0;
+            vh.push_back(cur);
+        }
         int i = 0;
-//        while (getline(streamData, str, ' ')) {
-//            if (i == 0) {
-//                str.erase(str.find("_"));
-//                if (cur->n->laneId.length() == 0) {
-//                    cur->n->laneId = str;
-//                } else if (cur->n->laneId.length() > 0
-//                        && str != cur->n->laneId) {
-////                    EV << count->laneId << " " << count->k << endl;
-//                    std::string mes;
-//                    if (before_name.front() == ':') {
-//                        mes = cur->n->laneId + " "
-//                                + std::to_string(cur->n->k * 0.1);
-//                        NodeVertex *nv = graph->searchVertex(before_name);
-//                        double w =
-//                                (nv->v->getW() == 0) ?
-//                                        cur->n->k :
-//                                        (nv->v->getW() + cur->n->k) / 2;
-//                        nv->v->setW(w);
-//                    } else {
-//                        std::string full_name = before_name + "-" + str;
-//                        mes = full_name + " " + std::to_string(cur->n->k * 0.1);
-//                        NodeVertex *nv = graph->searchVertex(full_name);
-//                        if (nv != NULL) {
-//                            double w =
-//                                    (nv->v->getW() == 0) ?
-//                                            cur->n->k :
-//                                            (nv->v->getW() + cur->n->k) / 2;
-//                            nv->v->setW(w);
-//                        } else {
-//                            Vertex *e = new Vertex();
-//                            cur->n->k = 0;             e->setId(full_name);
-//                            e->setW(cur->n->k);
-//                            graph->addVertex(e);
-//                        }
-//                    }
-//                    message.push_back(mes);
-//                    cur->n->i = cur->n->k = 0;
-//                    cur->n->laneId.erase();
-//                }
-//            } else if (i == 2) {
-//                if (std::stod(str) == 0) {
-//                    cur->n->i = 0;
-//                    cur->n->k++;
-//                } else {
-//                    if (cur->n->i == 0 && cur->n->k > 0)
-//                        cur->n->k--;
-//                    cur->n->i++;
-//                }
-//            }
-//            i++;
-//        }
         while (getline(streamData, str, ' ')) {
             if (i == 0) {
                 str.erase(str.find("_"));
-                if (count->laneId.length() == 0) {
-                    count->laneId = str;
-                } else if (count->laneId.length() > 0 && str != count->laneId) {
+                cur->n->laneId = str;
+                if (cur->n->beforeLaneId.length() == 0) {
+                    cur->n->beforeLaneId = str;
+                } else if (cur->n->laneId.compare(cur->n->beforeLaneId) != 0) {
 //                    EV << count->laneId << " " << count->k << endl;
                     std::string mes;
-                    if (before_name.front() == ':') {
-                        mes = count->laneId + " "
-                                + std::to_string(count->k * 0.1);
-                        NodeVertex *nv = graph->searchVertex(before_name);
-                        double w =
-                                (nv->v->getW() == 0) ?
-                                        count->k :
-                                        (nv->v->getW() + count->k) / 2;
-                        nv->v->setW(w);
-                    } else {
-                        std::string full_name = before_name + "-" + str;
-                        mes = full_name + " " + std::to_string(count->k * 0.1);
+                    if (cur->n->beforeLaneId.front() == ':') {
+                        mes = cur->n->laneId + " "
+                                + std::to_string(cur->n->stopTime * 0.1);
+                        NodeVertex *nv = graph->searchVertex(
+                                cur->n->beforeLaneId);
+                        nv->v->setW(cur->n->stopTime * 0.1);
+                        message.push_back(mes);
+                    } else if (cur->n->laneId.front() == ':') {
+                        std::string full_name = cur->n->beforeLaneId + "-"
+                                + str;
+                        mes = full_name + " "
+                                + std::to_string(cur->n->stopTime * 0.1);
                         NodeVertex *nv = graph->searchVertex(full_name);
-                        if (nv != NULL) {
-                            double w =
-                                    (nv->v->getW() == 0) ?
-                                            count->k :
-                                            (nv->v->getW() + count->k) / 2;
-                            nv->v->setW(w);
-                        } else {
-                            Vertex *e = new Vertex();
-                            e->setId(full_name);
-                            e->setW(count->k);
-                            graph->addVertex(e);
-                        }
+                        nv->v->setW(cur->n->stopTime * 0.1);
+                        message.push_back(mes);
                     }
-                    message.push_back(mes);
-                    count->i = 0;
-                    count->k = 0;
-                    count->laneId.erase();
+                    if (cur->n->beforeLaneId.front() != cur->n->laneId.front())
+                        cur->n->stopTime = 0;
+                    cur->n->beforeLaneId = cur->n->laneId;
                 }
             } else if (i == 2) {
                 if (std::stod(str) == 0) {
-                    count->i = 0;
-                    count->k++;
-                } else {
-                    if (count->i == 0 && count->k > 0)
-                        count->k--;
-                    count->i++;
+                    cur->n->stopTime++;
                 }
             }
             i++;
         }
-//    }
     }
 }
 

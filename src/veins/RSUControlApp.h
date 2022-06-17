@@ -46,7 +46,6 @@ private:
     int subscribedServiceId = 0;
     cMessage *sendBeacon;
     std::vector<AGV*> vh;
-    Count *count;
     Graph *graph;
     std::vector<std::string> message;
 };
