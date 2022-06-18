@@ -21,16 +21,16 @@
 #include <fstream>
 #include <sstream>
 
-class Count {
+class ItineraryRecord {// Ban ghi hanh trinh cua xe
 public:
-    std::string laneId, beforeLaneId;
+    std::string laneId, prevLaneId;
     int stopTime;
 };
 
 class AGV {
 public:
     std::string id;
-    Count *n;
+    ItineraryRecord *itinerary;
 };
 
 class Edge {
@@ -78,6 +78,7 @@ public:
     double predictW, q, d;
     Vertex() {
         k = 0;
+        predictW = 0;
     }
     void setId(std::string id) {
         this->id = id;

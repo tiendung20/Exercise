@@ -25,6 +25,7 @@ class Constant {
 public:
     static constexpr const char* FIRST = "First vehicle";
     static constexpr const char* RSU_IDENTIFY = "RSU";
+    static constexpr const double GAMMA = 0.3;
 
     Constant();
     virtual ~Constant();

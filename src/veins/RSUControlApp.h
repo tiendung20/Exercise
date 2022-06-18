@@ -24,6 +24,7 @@
 
 #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
 #include "veins/modules/application/traci/TraCIDemoRSU11p.h"
+#include "veins/modules/application/traci/TraCIDemo11pMessage_m.h"
 
 using namespace omnetpp;
 
@@ -45,9 +46,12 @@ private:
     bool hasStopped = false;
     int subscribedServiceId = 0;
     cMessage *sendBeacon;
-    std::vector<AGV*> vh;
+    std::vector<AGV*> vhs;
     Graph *graph;
     std::vector<std::string> message;
+    void readMessage(TraCIDemo11pMessage *bc);
+    void exponentialSmoothing(NodeVertex *nv, double stopTime);
+    void readLane(AGV *cur, std::string str);
 };
 }
 

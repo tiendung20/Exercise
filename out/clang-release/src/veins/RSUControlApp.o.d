@@ -52,8 +52,8 @@
   /home/dung/Documents/veins/src/veins/modules/mobility/traci/TraCICommandInterface.h \
   /home/dung/Documents/veins/src/veins/modules/world/traci/trafficLight/TraCITrafficLightProgram.h \
   /home/dung/Documents/veins/src/veins/modules/application/traci/TraCIDemoRSU11p.h \
-  veins/Constant.h \
-  /home/dung/Documents/veins/src/veins/modules/application/traci/TraCIDemo11pMessage_m.h
+  /home/dung/Documents/veins/src/veins/modules/application/traci/TraCIDemo11pMessage_m.h \
+  veins/Constant.h
 
 veins/RSUControlApp.h:
 
@@ -165,6 +165,6 @@ veins/Graph.h:
 
 /home/dung/Documents/veins/src/veins/modules/application/traci/TraCIDemoRSU11p.h:
 
-veins/Constant.h:
-
 /home/dung/Documents/veins/src/veins/modules/application/traci/TraCIDemo11pMessage_m.h:
+
+veins/Constant.h:

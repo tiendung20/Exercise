@@ -31,21 +31,7 @@ void printVertex(NodeVertex *root) {
         printVertex(root->left);
         if (root->j_of_vertex.size() == 0) {
             EV << root->v->getId() << endl;
-//            for (auto r : root->v->getFrom()) {
-//                EV << r->getId() << " ";
-//            }
-//            EV << endl;
-//            for (auto r : root->v->getTo()) {
-//                EV << r->getId() << " ";
-//            }
-//            EV << endl;
-//        if (root->j_of_vertex.size() > 2) {
-//            for (auto r : root->v->getInternals()) {
-//                if (r->getFrom().length() > 0 && r->getTo().length() > 0)
-//                    EV << r->getFrom() << " + " << r->getTo() << " + "
-//                              << r->getW() << endl;
-//            }
-//        }
+
         }
         printVertex(root->right);
     }
@@ -77,19 +63,89 @@ void RSUControlApp::onBSM(DemoSafetyMessage *bsm) {
     //for my own simulation circle
 }
 
+void RSUControlApp::exponentialSmoothing(NodeVertex *nv, double stopTime) {
+    if (nv->v->k == 0) {
+        nv->v->predictW = stopTime;
+        nv->v->d = nv->v->q = 0;
+        nv->v->k++;
+    } else {
+        double error = stopTime - nv->v->predictW;
+        nv->v->q = Constant::GAMMA * error - (1 - Constant::GAMMA) * nv->v->q;
+        nv->v->d = Constant::GAMMA * abs(error)
+                - (1 - Constant::GAMMA) * nv->v->d;
+        double lambda = abs(nv->v->q / nv->v->d);
+        nv->v->predictW = lambda * stopTime + (1 - lambda) * nv->v->predictW;
+//        mes = mes + " " + std::to_string(nv->v->predictW);
+    }
+}
+
+void RSUControlApp::readLane(AGV *cur, std::string str) {
+    double stopTime = cur->itinerary->stopTime * 0.1;
+    str.erase(str.find("_"));
+    cur->itinerary->laneId = str;
+    if (cur->itinerary->prevLaneId.length() == 0) {
+        cur->itinerary->prevLaneId = str;
+    } else if (cur->itinerary->laneId.compare(cur->itinerary->prevLaneId)
+            != 0) {
+        std::string mes;
+        if (cur->itinerary->prevLaneId.front() == ':') {
+            mes = cur->itinerary->laneId + " " + std::to_string(stopTime);
+            NodeVertex *nv = graph->searchVertex(cur->itinerary->prevLaneId);
+            exponentialSmoothing(nv, stopTime);
+            nv->v->setW(stopTime);
+            message.push_back(mes);
+        } else if (cur->itinerary->laneId.front() == ':') {
+            std::string full_name = cur->itinerary->prevLaneId + "-" + str;
+            mes = full_name + " " + std::to_string(stopTime);
+            NodeVertex *nv = graph->searchVertex(full_name);
+            exponentialSmoothing(nv, stopTime);
+            nv->v->setW(stopTime);
+            message.push_back(mes);
+        }
+        if (cur->itinerary->prevLaneId.front()
+                != cur->itinerary->laneId.front())
+            cur->itinerary->stopTime = 0;
+        cur->itinerary->prevLaneId = cur->itinerary->laneId;
+    }
+}
+
+void RSUControlApp::readMessage(TraCIDemo11pMessage *bc) {
+    std::stringstream streamData(bc->getDemoData());
+    std::string str;
+    AGV *cur = NULL;
+    for (auto a : vhs) {
+        if (a->id.compare(std::to_string(bc->getSenderAddress())) == 0)
+            cur = a;
+    }
+    if (cur == NULL) {
+        cur = new AGV();//3 dong sau ghep thanh 1 phan ptkd cua AGV co tham so truyen vao
+        cur->id = std::to_string(bc->getSenderAddress());
+        cur->itinerary = new ItineraryRecord();
+        cur->itinerary->stopTime = 0;
+        vhs.push_back(cur);
+    }
+    int i = 0;
+    while (getline(streamData, str, ' ')) {
+        if (i == 0) {
+            readLane(cur, str);
+        } else if (i == 2) {
+            if (std::stod(str) == 0) {
+                cur->itinerary->stopTime++;
+            }
+        }
+        i++;
+    }
+}
+
 void RSUControlApp::onWSM(BaseFrame1609_4 *wsm) {
     // Your application has received a data message from another car or RSU
     // code for handling the message goes here, see TraciDemo11p.cc for examples
     cPacket *enc = wsm->getEncapsulatedPacket();
     if (TraCIDemo11pMessage *bc = dynamic_cast<TraCIDemo11pMessage*>(enc)) {
-//        if(strcmp(Constant::FIRST, bc->getDemoData()) == 0){
-//        EV << "my message = " << bc->getDemoData() << " from "
-//                  << bc->getSenderAddress() << endl;
         if (sendBeacon != NULL) {
             if (sendBeacon->isScheduled()) {
                 cancelEvent(sendBeacon);
             }
-
             TraCIDemo11pMessage *rsuBeacon = new TraCIDemo11pMessage();
 
             char *ret = mergeContent(bc->getSenderAddress());
@@ -100,85 +156,7 @@ void RSUControlApp::onWSM(BaseFrame1609_4 *wsm) {
             populateWSM(WSM);
             send(WSM, lowerLayerOut);
         }
-        std::stringstream streamData(bc->getDemoData());
-        std::string str;
-        AGV *cur = NULL;
-        for (auto a : vh) {
-            if (a->id.compare(std::to_string(bc->getSenderAddress())) == 0)
-                cur = a;
-        }
-        if (cur == NULL) {
-            cur = new AGV();
-            cur->id = std::to_string(bc->getSenderAddress());
-            cur->n = new Count();
-            cur->n->stopTime = 0;
-            vh.push_back(cur);
-        }
-        int i = 0;
-        while (getline(streamData, str, ' ')) {
-            if (i == 0) {
-                str.erase(str.find("_"));
-                cur->n->laneId = str;
-                if (cur->n->beforeLaneId.length() == 0) {
-                    cur->n->beforeLaneId = str;
-                } else if (cur->n->laneId.compare(cur->n->beforeLaneId) != 0) {
-//                    EV << count->laneId << " " << count->k << endl;
-                    std::string mes;
-                    if (cur->n->beforeLaneId.front() == ':') {
-                        mes = cur->n->laneId + " "
-                                + std::to_string(cur->n->stopTime * 0.1);
-                        NodeVertex *nv = graph->searchVertex(
-                                cur->n->beforeLaneId);
-                        if (nv->v->k == 0) {
-                            nv->v->predictW = cur->n->stopTime * 0.1;
-                            nv->v->d = nv->v->q = 0;
-                            nv->v->k++;
-                        } else {
-                            double error = (cur->n->stopTime * 0.1)
-                                    - nv->v->predictW;
-                            nv->v->q = 0.3 * error - 0.7 * nv->v->q;
-                            nv->v->d = 0.3 * abs(error) - 0.7 * nv->v->d;
-                            double a = abs(nv->v->q / nv->v->d);
-                            nv->v->predictW = a * cur->n->stopTime * 0.1
-                                    + (1 - a) * nv->v->predictW;
-                            mes = mes + " " + std::to_string(nv->v->predictW);
-                        }
-                        nv->v->setW(cur->n->stopTime * 0.1);
-                        message.push_back(mes);
-                    } else if (cur->n->laneId.front() == ':') {
-                        std::string full_name = cur->n->beforeLaneId + "-"
-                                + str;
-                        mes = full_name + " "
-                                + std::to_string(cur->n->stopTime * 0.1);
-                        NodeVertex *nv = graph->searchVertex(full_name);
-                        if (nv->v->k == 0) {
-                            nv->v->predictW = cur->n->stopTime * 0.1;
-                            nv->v->d = nv->v->q = 0;
-                            nv->v->k++;
-                        } else {
-                            double error = (cur->n->stopTime * 0.1)
-                                    - nv->v->predictW;
-                            nv->v->q = 0.3 * error - 0.7 * nv->v->q;
-                            nv->v->d = 0.3 * abs(error) - 0.7 * nv->v->d;
-                            double a = abs(nv->v->q / nv->v->d);
-                            nv->v->predictW = a * cur->n->stopTime * 0.1
-                                    + (1 - a) * nv->v->predictW;
-                            mes = mes + " " + std::to_string(nv->v->predictW);
-                        }
-                        nv->v->setW(cur->n->stopTime * 0.1);
-                        message.push_back(mes);
-                    }
-                    if (cur->n->beforeLaneId.front() != cur->n->laneId.front())
-                        cur->n->stopTime = 0;
-                    cur->n->beforeLaneId = cur->n->laneId;
-                }
-            } else if (i == 2) {
-                if (std::stod(str) == 0) {
-                    cur->n->stopTime++;
-                }
-            }
-            i++;
-        }
+        readMessage(bc);
     }
 }
 
